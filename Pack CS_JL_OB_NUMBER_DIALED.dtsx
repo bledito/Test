@@ -1,0 +1,1489 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/12/2019 9:59:20 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="EU999K16SSCRP01"
+  DTS:CreatorName="EMEA\gtsat001"
+  DTS:DTSID="{112BA588-8701-444B-8CA1-0CBB78AA602D}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3026.27"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Pack CS_JL_OB_NUMBER_DIALED"
+  DTS:PackageType="5"
+  DTS:VersionBuild="142"
+  DTS:VersionGUID="{7694F74A-32BC-49B3-A8F6-F5C74945D543}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CRT_DB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{070B44C8-E37B-4A2B-B066-E28A7900D561}"
+      DTS:ObjectName="CRT_DB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=EU999K16SSCDB01;Initial Catalog=CRTDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[t_uk_cs_jl_ob_number_dialed_stg]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{9EBD132D-A383-4ACD-A482-3D9FA9355D97}"
+      DTS:ObjectName="t_uk_cs_jl_ob_number_dialed_stg">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2057"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="\\10.7.16.12\ssis\Data Sources\CS JL\JL Outbound Number Dialed - Daily.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Date"
+              DTS:DTSID="{2AC0D408-B58F-4CFE-81C2-AB94114338CB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Call ID"
+              DTS:DTSID="{9E1D8E64-2C88-4F3D-8172-7280249703E4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Site"
+              DTS:DTSID="{8EE89BD8-8B21-4DAB-AA83-246C54F8E4F2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Project Name"
+              DTS:DTSID="{BF2D8B5B-BFF5-428C-BF97-28BB1FBBE86E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Split ID"
+              DTS:DTSID="{9A62D722-1EDC-4441-89E1-31167DB30B1E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Split Description"
+              DTS:DTSID="{7800D7D4-B6DC-4949-A3F9-A6C794FE466B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="20"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Disposition Description"
+              DTS:DTSID="{EC4A1F16-CDF3-41C4-8C90-BAA6B9A12472}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ANI"
+              DTS:DTSID="{C5B02D56-CADD-4901-BDC9-1B3E4845BA6A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Number Dialed"
+              DTS:DTSID="{4BFE55F8-A3A5-45EB-A85B-8A1A75BDA241}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="16"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Transferred"
+              DTS:DTSID="{A47A7D6B-671B-4F62-A3F0-3E4DAD44AEB6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="16"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Count Call IDs"
+              DTS:DTSID="{4B572356-A150-465C-9274-4316AE81D768}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Total Duration (Secs)"
+              DTS:DTSID="{0FCA472A-56E7-461C-AEA9-31EE1459965D}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C826DE53-5040-4C2F-A314-9585FA9FF89A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="cnt">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E3AE3D9B-24C0-4E07-ACB2-6B522B0094FE}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT * FROM __InstanceModificationEvent WITHIN 5 WHERE TargetInstance ISA \&quot;CIM_DataFile\&quot; AND TargetInstance.Name = \&quot;D:\\\\ssis\\\\Data Sources\\\\BO\\\\CRT_UK_GEN_KRONOS.txt\&quot;&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Filepath">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT * FROM __InstanceModificationEvent WITHIN 5 WHERE TargetInstance ISA "CIM_DataFile" AND TargetInstance.Name = "D:\\ssis\\Data Sources\\BO\\CRT_UK_GEN_KRONOS.txt"</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DELETE Existing Records From MASTER where exist in STG"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{6D591E79-5545-41B1-A5FC-C80837CB0D77}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DELETE Existing Records From MASTER where exist in STG"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{070B44C8-E37B-4A2B-B066-E28A7900D561}"
+          SQLTask:SqlStatementSource=" DELETE FROM [CRTDB].[dbo].[t_uk_cs_jl_ob_number_dialed]&#xA; WHERE  EXISTS (SELECT * &#xA;                FROM   [CRTDB].[dbo].[t_uk_cs_jl_ob_number_dialed_stg]&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;AS B &#xA;                WHERE  [CRTDB].[dbo].[t_uk_cs_jl_ob_number_dialed].[Date] = B.[Date] )" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{E77CEF64-3BCA-422E-8A58-D2A45DC66B0E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="IMT to t_uk_cs_jl_ob_number_dialed_stg"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Date]"
+                      cachedDataType="date"
+                      cachedName="Date"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Date]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Call ID]"
+                      cachedDataType="i4"
+                      cachedName="Call ID"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Call ID]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Site]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Site"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Site]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Project Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Project Name"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Project Name]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Split ID]"
+                      cachedDataType="i4"
+                      cachedName="Split ID"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Split ID]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Split Description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Split Description"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Split Description]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Disposition Description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="Disposition Description"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Disposition Description]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Inputs[Data Conversion Input].Columns[ANI]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ANI"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[ANI]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Number Dialed]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Number Dialed"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Number Dialed]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Transferred]"
+                      cachedDataType="i1"
+                      cachedName="Transferred"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Transferred]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Count Call IDs]"
+                      cachedDataType="i1"
+                      cachedName="Count Call IDs"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Count Call IDs]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Total Duration (Secs)]"
+                      cachedDataType="i4"
+                      cachedName="Total Duration (Secs)"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Total Duration (Secs)]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date]"
+                      name="Copy of Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Call ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Call ID]"
+                      name="Copy of Call ID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Call ID]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Site]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Site]"
+                      name="Copy of Site"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Site]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Project Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Project Name]"
+                      name="Copy of Project Name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Project Name]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Split ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Split ID]"
+                      name="Copy of Split ID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Split ID]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Split Description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Split Description]"
+                      name="Copy of Split Description"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Split Description]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Disposition Description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Disposition Description]"
+                      name="Copy of Disposition Description"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Disposition Description]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ANI]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ANI]"
+                      name="Copy of ANI"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[ANI]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Number Dialed]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Number Dialed]"
+                      name="Copy of Number Dialed"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Number Dialed]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Transferred]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Transferred]"
+                      name="Copy of Transferred"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Transferred]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Count Call IDs]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Count Call IDs]"
+                      name="Copy of Count Call IDs"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Count Call IDs]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Total Duration (Secs)]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Total Duration (Secs)]"
+                      name="Copy of Total Duration (Secs)"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Total Duration (Secs)]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="2057"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[t_uk_cs_jl_ob_number_dialed_stg]"
+                  connectionManagerRefId="Package.ConnectionManagers[t_uk_cs_jl_ob_number_dialed_stg]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Date]"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Date]"
+                      name="Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Call ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Call ID]"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Call ID]"
+                      name="Call ID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Site]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Site]"
+                      length="50"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Site]"
+                      name="Site"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Project Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Project Name]"
+                      length="100"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Project Name]"
+                      name="Project Name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Split ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Split ID]"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Split ID]"
+                      name="Split ID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Split Description]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Split Description]"
+                      length="50"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Split Description]"
+                      name="Split Description"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Disposition Description]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Disposition Description]"
+                      length="20"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Disposition Description]"
+                      name="Disposition Description"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[ANI]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ANI]"
+                      length="50"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[ANI]"
+                      name="ANI"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Number Dialed]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Number Dialed]"
+                      length="50"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Number Dialed]"
+                      name="Number Dialed"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Transferred]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Transferred]"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Transferred]"
+                      name="Transferred"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Count Call IDs]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Count Call IDs]"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Count Call IDs]"
+                      name="Count Call IDs"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Total Duration (Secs)]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Total Duration (Secs)]"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].Columns[Total Duration (Secs)]"
+                      name="Total Duration (Secs)"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Date]"
+                      dataType="date"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Call ID]"
+                      dataType="i4"
+                      name="Call ID" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Site]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Site" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Project Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Project Name" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Split ID]"
+                      dataType="i4"
+                      name="Split ID" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Split Description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Split Description" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Disposition Description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="Disposition Description" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ANI]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ANI" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Number Dialed]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Number Dialed" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Transferred]"
+                      dataType="i1"
+                      name="Transferred" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Count Call IDs]"
+                      dataType="i1"
+                      name="Count Call IDs" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Total Duration (Secs)]"
+                      dataType="i4"
+                      name="Total Duration (Secs)" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[t_uk_cs_jl_ob_number_dialed_stg]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CRT_DB]"
+                  connectionManagerRefId="Package.ConnectionManagers[CRT_DB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Date]"
+                      cachedDataType="date"
+                      cachedName="Copy of Date"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Call ID]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Call ID"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Call ID]"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Call ID]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Site]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Site"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Site]"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Site]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Project Name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Copy of Project Name"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Project Name]"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Project Name]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Split ID]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Split ID"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Split ID]"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Split ID]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Split Description]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Split Description"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Split Description]"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Split Description]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Disposition Description]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Copy of Disposition Description"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Disposition Description]"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Disposition Description]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of ANI]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of ANI"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ANI]"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of ANI]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Number Dialed]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Number Dialed"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Number Dialed]"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Number Dialed]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Transferred]"
+                      cachedDataType="i1"
+                      cachedName="Copy of Transferred"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Transferred]"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Transferred]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Count Call IDs]"
+                      cachedDataType="i1"
+                      cachedName="Copy of Count Call IDs"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Count Call IDs]"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Count Call IDs]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Total Duration (Secs)]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Total Duration (Secs)"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total Duration (Secs)]"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Total Duration (Secs)]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      dataType="dbTimeStamp"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Call ID]"
+                      dataType="i4"
+                      name="Call ID" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Site]"
+                      dataType="wstr"
+                      length="50"
+                      name="Site" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Project Name]"
+                      dataType="wstr"
+                      length="100"
+                      name="Project Name" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Split ID]"
+                      dataType="i4"
+                      name="Split ID" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Split Description]"
+                      dataType="wstr"
+                      length="50"
+                      name="Split Description" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Disposition Description]"
+                      dataType="wstr"
+                      length="20"
+                      name="Disposition Description" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ANI]"
+                      dataType="wstr"
+                      length="50"
+                      name="ANI" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Number Dialed]"
+                      dataType="wstr"
+                      length="50"
+                      name="Number Dialed" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Transferred]"
+                      dataType="i2"
+                      name="Transferred" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Count Call IDs]"
+                      dataType="i2"
+                      name="Count Call IDs" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total Duration (Secs)]"
+                      dataType="i4"
+                      name="Total Duration (Secs)" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg.Paths[Data Conversion Output]"
+              endId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg.Paths[Flat File Source Output]"
+              endId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion.Inputs[Data Conversion Input]"
+              name="Flat File Source Output"
+              startId="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\INSERT INTO MASTER"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{A35DF44E-AF48-4D8E-9C1A-0E518CF70C35}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="INSERT INTO MASTER"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{070B44C8-E37B-4A2B-B066-E28A7900D561}"
+          SQLTask:SqlStatementSource="INSERT INTO [CRTDB].[dbo].[t_uk_cs_jl_ob_number_dialed]&#xA;SELECT [Date]&#xA;      ,[Call ID]&#xA;      ,[Site]&#xA;      ,[Project Name]&#xA;      ,[Split ID]&#xA;      ,[Split Description]&#xA;      ,[Disposition Description]&#xA;      ,[ANI]&#xA;      ,[Number Dialed]&#xA;      ,[Transferred]&#xA;      ,[Count Call IDs]&#xA;      ,[Total Duration (Secs)]&#xA;  FROM [CRTDB].[dbo].[t_uk_cs_jl_ob_number_dialed_stg]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TRUNC STG t_uk_cs_jl_ob_number_dialed_stg"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{E854F7EF-50FD-4DFF-B4B5-BC77D4AE7242}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TRUNC STG t_uk_cs_jl_ob_number_dialed_stg"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{070B44C8-E37B-4A2B-B066-E28A7900D561}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[t_uk_cs_jl_ob_number_dialed_stg]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TRUNC STG t_uk_cs_jl_ob_number_dialed_stg 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{a789fbe1-b7b0-42e9-a4ba-049249dadb70}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TRUNC STG t_uk_cs_jl_ob_number_dialed_stg 1"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{070B44C8-E37B-4A2B-B066-E28A7900D561}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[t_uk_cs_jl_ob_number_dialed_stg]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{DBD16489-443E-460B-BF66-8A7A1EEB1749}"
+      DTS:From="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DELETE Existing Records From MASTER where exist in STG" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{B41A6580-C033-43AC-A8BE-3E675B1E787B}"
+      DTS:From="Package\TRUNC STG t_uk_cs_jl_ob_number_dialed_stg"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{28A7CE42-0426-4303-B234-ED69362E4401}"
+      DTS:From="Package\INSERT INTO MASTER"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\TRUNC STG t_uk_cs_jl_ob_number_dialed_stg 1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 26]"
+      DTS:CreationName=""
+      DTS:DTSID="{F2369D7D-6DBA-4A44-BEF7-3DB76A9ECAF4}"
+      DTS:From="Package\DELETE Existing Records From MASTER where exist in STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 26"
+      DTS:To="Package\INSERT INTO MASTER" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="358,42"
+          Id="Package\DELETE Existing Records From MASTER where exist in STG"
+          TopLeft="27,263.976471737924" />
+        <NodeLayout
+          Size="274,42"
+          Id="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg"
+          TopLeft="68,191.976471737924" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\INSERT INTO MASTER"
+          TopLeft="119,337.976471737924" />
+        <NodeLayout
+          Size="299,42"
+          Id="Package\TRUNC STG t_uk_cs_jl_ob_number_dialed_stg"
+          TopLeft="61,116.976471737924" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="205.5,233.976471737924">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30"
+              Start="0,0"
+              End="0,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="207.75,158.976471737924">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33"
+              Start="0,0"
+              End="0,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 26]"
+          TopLeft="209,305.976471737924">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="299,42"
+          Id="Package\TRUNC STG t_uk_cs_jl_ob_number_dialed_stg 1"
+          TopLeft="67,420.976471737924" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="214.25,379.976471737924">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41"
+              Start="0,0"
+              End="0,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Flat File Source"
+          TopLeft="98,95" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\Data Conversion"
+          TopLeft="93,176" />
+        <EdgeLayout
+          Id="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg.Paths[Flat File Source Output]"
+          TopLeft="172.25,137">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39"
+              Start="0,0"
+              End="0,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171,42"
+          Id="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination"
+          TopLeft="87,249" />
+        <EdgeLayout
+          Id="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg.Paths[Data Conversion Output]"
+          TopLeft="171.75,218">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31"
+              Start="0,0"
+              End="0,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\IMT to t_uk_cs_jl_ob_number_dialed_stg\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

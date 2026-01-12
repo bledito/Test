@@ -1,0 +1,2209 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/12/2019 9:59:20 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="EU999K16SSCRP01"
+  DTS:CreatorName="EMEA\gtsat001"
+  DTS:DTSID="{63BEA01C-1A58-4576-9254-A94560DA3CCF}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3026.27"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="pack CRT_UK_GEN_SIOX_AGENT_static"
+  DTS:PackageType="5"
+  DTS:VersionBuild="116"
+  DTS:VersionGUID="{5AFBD64A-8BB6-4BD4-8F44-37333448D6F3}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[EU999K16SSCDB01.CRTDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{99E97528-8FCF-4525-B4B0-0737044BD6D9}"
+      DTS:ObjectName="EU999K16SSCDB01.CRTDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=EU999K16SSCDB01;Initial Catalog=CRTDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SIOX_Agent_Activity]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{814E8F11-8FEC-45E5-B597-D8DD7E345E72}"
+      DTS:ObjectName="SIOX_Agent_Activity">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2057"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="65001"
+          DTS:ConnectionString="\\10.7.16.12\ssis\Data Sources\GEN\URep_SIOX_Exeter_Agent_Performance.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Year"
+              DTS:DTSID="{B6343517-9EC2-4DD0-B9F4-7EB6EA1BD6F0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Site"
+              DTS:DTSID="{94D1A1C5-0167-477A-A694-425864B121E3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Campaign"
+              DTS:DTSID="{9FF860A5-45AF-47BD-A881-2CBB83D4BBC4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="16"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Month"
+              DTS:DTSID="{BC4E705A-670D-4F4F-95EA-3E13989C9F64}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="16"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Cw"
+              DTS:DTSID="{CE923A23-B62F-40D7-A3CE-1116813D9E55}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Date"
+              DTS:DTSID="{976C7E8B-070E-4FC1-AF52-BDD1C8BD470E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Team"
+              DTS:DTSID="{47913167-7D96-4415-B105-049585D1F4B8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Agent"
+              DTS:DTSID="{B741C357-E098-4BB8-A60B-E3C3BB3A5021}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Login Time"
+              DTS:DTSID="{2FB6352A-F1A1-46E1-82A7-3E42CE9E09C8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Tickets"
+              DTS:DTSID="{00A7F4E7-A0E1-4E43-AC9A-1DE4AECB1F82}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Work Time"
+              DTS:DTSID="{7B4EBB82-FB2E-4ED4-8795-83C77599DFF2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Aht"
+              DTS:DTSID="{7BF56499-0679-4100-A273-12CB52EBA618}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="16"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Sl %"
+              DTS:DTSID="{19E720F0-0533-4501-95B4-EE3C238B5442}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Productive Time"
+              DTS:DTSID="{82BB1E90-AB3D-4E02-9824-5432C38B1095}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Non-Productive Time"
+              DTS:DTSID="{4E407948-F9F4-47FE-91D7-A1E5FD9FBFCE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Break Time"
+              DTS:DTSID="{CA7FC46A-1BD3-4904-98D6-0CB5F443A3E3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Idle Time"
+              DTS:DTSID="{ECCCE51F-D6B2-45F2-857C-CB0D1E03C382}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Occupancy"
+              DTS:DTSID="{ADAA1800-0D59-4FD4-BD2A-D5FD3CB965CF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Utilisation"
+              DTS:DTSID="{28DFD263-855B-4C64-8E24-557C44BDA95B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Sx Project Id"
+              DTS:DTSID="{3C2827D6-EC38-41D9-8168-036FC952EECE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Id Team"
+              DTS:DTSID="{CDAF01E9-C426-4949-83BF-7F8CAECAF40C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Datefilter"
+              DTS:DTSID="{111DDCC5-3066-457E-B988-6750864B7B5B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Break"
+              DTS:DTSID="{DB96F44F-3AA0-4643-A611-96E3724E947C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Employee Id"
+              DTS:DTSID="{056E77C9-7721-4EE7-AE1D-0869CFF2BF4C}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4CBCB560-D61E-43F3-BF01-36D48F266EA8}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="cnt">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8608AA3B-C1FF-48E6-9027-5AC25E6F43CC}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT * FROM __InstanceModificationEvent WITHIN 20 WHERE TargetInstance ISA \&quot;CIM_DataFile\&quot; AND TargetInstance.Name = \&quot;D:\\\\ssis\\\\Data Sources\\\\GEN\\\\URep_SIOX_Exeter_Agent_Performance.csv\&quot;&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Filepath">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT * FROM __InstanceModificationEvent WITHIN 20 WHERE TargetInstance ISA "CIM_DataFile" AND TargetInstance.Name = "D:\\ssis\\Data Sources\\GEN\\URep_SIOX_Exeter_Agent_Performance.csv"</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DELETE Existing records"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{9FE4169C-0B2C-4D22-929C-B0A5DA4EDB5E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DELETE Existing records"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{99E97528-8FCF-4525-B4B0-0737044BD6D9}"
+          SQLTask:SqlStatementSource="DELETE FROM [dbo].[t_uk_gen_siox_agent]&#xA;WHERE  EXISTS (SELECT * &#xA;               FROM   [t_uk_gen_siox_agent_stg]&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;AS B &#xA;               WHERE  [dbo].[t_uk_gen_siox_agent].[Date] = b.[Date])&#x9;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\IMT to STG"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{E920FFDE-8FAA-4F6D-A48F-F145ADE8DDFD}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="IMT to STG"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\IMT to STG\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\IMT to STG\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\IMT to STG\Data Conversion.Inputs[Data Conversion Input].Columns[Date]"
+                      cachedDataType="date"
+                      cachedName="Date"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Date]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\Data Conversion.Inputs[Data Conversion Input].Columns[Team]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Team"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Team]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\Data Conversion.Inputs[Data Conversion Input].Columns[Agent]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Agent"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Agent]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\Data Conversion.Inputs[Data Conversion Input].Columns[Login Time]"
+                      cachedDataType="date"
+                      cachedName="Login Time"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Login Time]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\Data Conversion.Inputs[Data Conversion Input].Columns[Tickets]"
+                      cachedDataType="i2"
+                      cachedName="Tickets"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Tickets]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\Data Conversion.Inputs[Data Conversion Input].Columns[Work Time]"
+                      cachedDataType="date"
+                      cachedName="Work Time"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Work Time]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\Data Conversion.Inputs[Data Conversion Input].Columns[Aht]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Aht"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Aht]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\Data Conversion.Inputs[Data Conversion Input].Columns[Sl %]"
+                      cachedDataType="i1"
+                      cachedName="Sl %"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Sl %]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\Data Conversion.Inputs[Data Conversion Input].Columns[Productive Time]"
+                      cachedDataType="date"
+                      cachedName="Productive Time"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Productive Time]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\Data Conversion.Inputs[Data Conversion Input].Columns[Non-Productive Time]"
+                      cachedDataType="date"
+                      cachedName="Non-Productive Time"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Non-Productive Time]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\Data Conversion.Inputs[Data Conversion Input].Columns[Break Time]"
+                      cachedDataType="date"
+                      cachedName="Break Time"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Break Time]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\Data Conversion.Inputs[Data Conversion Input].Columns[Idle Time]"
+                      cachedDataType="date"
+                      cachedName="Idle Time"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Idle Time]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\Data Conversion.Inputs[Data Conversion Input].Columns[Occupancy]"
+                      cachedDataType="r4"
+                      cachedName="Occupancy"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Occupancy]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\Data Conversion.Inputs[Data Conversion Input].Columns[Utilisation]"
+                      cachedDataType="r4"
+                      cachedName="Utilisation"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Utilisation]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\Data Conversion.Inputs[Data Conversion Input].Columns[Sx Project Id]"
+                      cachedDataType="i2"
+                      cachedName="Sx Project Id"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Sx Project Id]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\Data Conversion.Inputs[Data Conversion Input].Columns[Id Team]"
+                      cachedDataType="i2"
+                      cachedName="Id Team"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Id Team]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\Data Conversion.Inputs[Data Conversion Input].Columns[Campaign]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Campaign"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Campaign]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\Data Conversion.Inputs[Data Conversion Input].Columns[Site]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Site"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Site]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\Data Conversion.Inputs[Data Conversion Input].Columns[Break]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Break"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Break]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\Data Conversion.Inputs[Data Conversion Input].Columns[Employee Id]"
+                      cachedDataType="i4"
+                      cachedName="Employee Id"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Employee Id]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\IMT to STG\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date]"
+                      name="Copy of Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Team]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Team]"
+                      name="Copy of Team"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Team]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Agent]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Agent]"
+                      name="Copy of Agent"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Agent]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Login Time]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Login Time]"
+                      name="Copy of Login Time"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Login Time]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Tickets]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Tickets]"
+                      name="Copy of Tickets"
+                      precision="18"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Tickets]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Work Time]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Work Time]"
+                      name="Copy of Work Time"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Work Time]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Aht]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Aht]"
+                      name="Copy of Aht"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Aht]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Sl %]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Sl %]"
+                      name="Copy of Sl %"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Sl %]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Productive Time]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Productive Time]"
+                      name="Copy of Productive Time"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Productive Time]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Non-Productive Time]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Non-Productive Time]"
+                      name="Copy of Non-Productive Time"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Non-Productive Time]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Break Time]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Break Time]"
+                      name="Copy of Break Time"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Break Time]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Idle Time]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Idle Time]"
+                      name="Copy of Idle Time"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Idle Time]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Occupancy]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Occupancy]"
+                      name="Copy of Occupancy"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Occupancy]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Utilisation]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Utilisation]"
+                      name="Copy of Utilisation"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Utilisation]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Sx Project Id]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Sx Project Id]"
+                      name="Copy of Sx Project Id"
+                      precision="18"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Sx Project Id]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Id Team]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Id Team]"
+                      name="Copy of Id Team"
+                      precision="18"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Id Team]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Campaign]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Campaign]"
+                      name="Copy of Campaign"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Campaign]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Site]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Site]"
+                      name="Copy of Site"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Site]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Break]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Break]"
+                      name="Copy of Break"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Break]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Employee Id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Employee Id]"
+                      name="Copy of Employee Id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Employee Id]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\IMT to STG\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\IMT to STG\Flat File Source 1"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="2057"
+              name="Flat File Source 1"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\IMT to STG\Flat File Source 1.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SIOX_Agent_Activity]"
+                  connectionManagerRefId="Package.ConnectionManagers[SIOX_Agent_Activity]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Year]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Year]"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Site]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Site]"
+                      length="50"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Site]"
+                      name="Site"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Campaign]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Campaign]"
+                      length="50"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Campaign]"
+                      name="Campaign"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Month]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Month]"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Month]"
+                      name="Month"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Cw]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Cw]"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Cw]"
+                      name="Cw"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Date]"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Date]"
+                      name="Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Team]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Team]"
+                      length="50"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Team]"
+                      name="Team"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Agent]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Agent]"
+                      length="50"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Agent]"
+                      name="Agent"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Login Time]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Login Time]"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Login Time]"
+                      name="Login Time"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Tickets]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Tickets]"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Tickets]"
+                      name="Tickets"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Work Time]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Work Time]"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Work Time]"
+                      name="Work Time"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Aht]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Aht]"
+                      length="255"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Aht]"
+                      name="Aht"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Sl %]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Sl %]"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Sl %]"
+                      name="Sl %"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Productive Time]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Productive Time]"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Productive Time]"
+                      name="Productive Time"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Non-Productive Time]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Non-Productive Time]"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Non-Productive Time]"
+                      name="Non-Productive Time"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Break Time]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Break Time]"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Break Time]"
+                      name="Break Time"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Idle Time]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Idle Time]"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Idle Time]"
+                      name="Idle Time"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Occupancy]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Occupancy]"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Occupancy]"
+                      name="Occupancy"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Utilisation]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Utilisation]"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Utilisation]"
+                      name="Utilisation"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Sx Project Id]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Sx Project Id]"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Sx Project Id]"
+                      name="Sx Project Id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Id Team]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Id Team]"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Id Team]"
+                      name="Id Team"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Datefilter]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Datefilter]"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Datefilter]"
+                      name="Datefilter"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Break]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Break]"
+                      length="255"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Break]"
+                      name="Break"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Employee Id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Employee Id]"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].Columns[Employee Id]"
+                      name="Employee Id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Year]"
+                      dataType="i2"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Site]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="Site" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Campaign]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="Campaign" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Month]"
+                      dataType="i1"
+                      name="Month" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Cw]"
+                      dataType="i1"
+                      name="Cw" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Date]"
+                      dataType="date"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Team]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="Team" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Agent]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="Agent" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Login Time]"
+                      dataType="date"
+                      name="Login Time" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Tickets]"
+                      dataType="i2"
+                      name="Tickets" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Work Time]"
+                      dataType="date"
+                      name="Work Time" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Aht]"
+                      codePage="65001"
+                      dataType="str"
+                      length="255"
+                      name="Aht" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Sl %]"
+                      dataType="i1"
+                      name="Sl %" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Productive Time]"
+                      dataType="date"
+                      name="Productive Time" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Non-Productive Time]"
+                      dataType="date"
+                      name="Non-Productive Time" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Break Time]"
+                      dataType="date"
+                      name="Break Time" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Idle Time]"
+                      dataType="date"
+                      name="Idle Time" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Occupancy]"
+                      dataType="r4"
+                      name="Occupancy" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Utilisation]"
+                      dataType="r4"
+                      name="Utilisation" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Sx Project Id]"
+                      dataType="i2"
+                      name="Sx Project Id" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Id Team]"
+                      dataType="i2"
+                      name="Id Team" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Datefilter]"
+                      dataType="date"
+                      name="Datefilter" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Break]"
+                      codePage="65001"
+                      dataType="str"
+                      length="255"
+                      name="Break" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[Employee Id]"
+                      dataType="i4"
+                      name="Employee Id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\IMT to STG\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[t_uk_gen_siox_agent_stg]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\IMT to STG\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[EU999K16SSCDB01.CRTDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[EU999K16SSCDB01.CRTDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Date]"
+                      cachedDataType="date"
+                      cachedName="Copy of Date"
+                      externalMetadataColumnId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Team]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Team"
+                      externalMetadataColumnId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Team]"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Team]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Agent]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Copy of Agent"
+                      externalMetadataColumnId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Agent]"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Agent]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Login Time]"
+                      cachedDataType="date"
+                      cachedName="Copy of Login Time"
+                      externalMetadataColumnId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Login Time]"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Login Time]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Tickets]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of Tickets"
+                      cachedPrecision="18"
+                      externalMetadataColumnId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tickets]"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Tickets]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Work Time]"
+                      cachedDataType="date"
+                      cachedName="Copy of Work Time"
+                      externalMetadataColumnId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Work Time]"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Work Time]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Aht]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Copy of Aht"
+                      externalMetadataColumnId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AHT]"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Aht]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Sl %]"
+                      cachedDataType="i1"
+                      cachedName="Copy of Sl %"
+                      externalMetadataColumnId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SL %]"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Sl %]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Productive Time]"
+                      cachedDataType="date"
+                      cachedName="Copy of Productive Time"
+                      externalMetadataColumnId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Productive Time]"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Productive Time]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Non-Productive Time]"
+                      cachedDataType="date"
+                      cachedName="Copy of Non-Productive Time"
+                      externalMetadataColumnId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Non-Productive Time]"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Non-Productive Time]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Break Time]"
+                      cachedDataType="date"
+                      cachedName="Copy of Break Time"
+                      externalMetadataColumnId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Break Time]"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Break Time]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Idle Time]"
+                      cachedDataType="date"
+                      cachedName="Copy of Idle Time"
+                      externalMetadataColumnId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Idle Time]"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Idle Time]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Occupancy]"
+                      cachedDataType="r4"
+                      cachedName="Copy of Occupancy"
+                      externalMetadataColumnId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Occupancy]"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Occupancy]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Utilisation]"
+                      cachedDataType="r4"
+                      cachedName="Copy of Utilisation"
+                      externalMetadataColumnId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Utilisation]"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Utilisation]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Sx Project Id]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of Sx Project Id"
+                      cachedPrecision="18"
+                      externalMetadataColumnId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sx Project ID]"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Sx Project Id]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Id Team]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of Id Team"
+                      cachedPrecision="18"
+                      externalMetadataColumnId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID Team]"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Id Team]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Site]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Site"
+                      externalMetadataColumnId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Site]"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Site]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Campaign]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Campaign"
+                      externalMetadataColumnId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Campaign]"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Campaign]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Break]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Copy of Break"
+                      externalMetadataColumnId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Break]"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Break]" />
+                    <inputColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Employee Id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Employee Id"
+                      externalMetadataColumnId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Employee ID]"
+                      lineageId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Employee Id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      dataType="dbDate"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Site]"
+                      dataType="wstr"
+                      length="100"
+                      name="Site" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Campaign]"
+                      dataType="wstr"
+                      length="100"
+                      name="Campaign" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Team]"
+                      dataType="wstr"
+                      length="100"
+                      name="Team" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Agent]"
+                      dataType="wstr"
+                      length="100"
+                      name="Agent" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Login Time]"
+                      dataType="dbTimeStamp"
+                      name="Login Time" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Tickets]"
+                      dataType="r8"
+                      name="Tickets" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Work Time]"
+                      dataType="dbTimeStamp"
+                      name="Work Time" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AHT]"
+                      dataType="wstr"
+                      length="255"
+                      name="AHT" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SL %]"
+                      dataType="r8"
+                      name="SL %" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Productive Time]"
+                      dataType="dbTimeStamp"
+                      name="Productive Time" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Non-Productive Time]"
+                      dataType="dbTimeStamp"
+                      name="Non-Productive Time" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Break Time]"
+                      dataType="dbTimeStamp"
+                      name="Break Time" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Idle Time]"
+                      dataType="dbTimeStamp"
+                      name="Idle Time" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Occupancy]"
+                      dataType="r8"
+                      name="Occupancy" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Utilisation]"
+                      dataType="r8"
+                      name="Utilisation" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sx Project ID]"
+                      dataType="r8"
+                      name="Sx Project ID" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID Team]"
+                      dataType="r8"
+                      name="ID Team" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Break]"
+                      dataType="wstr"
+                      length="255"
+                      name="Break" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Employee ID]"
+                      dataType="i4"
+                      name="Employee ID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\IMT to STG\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\IMT to STG\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\IMT to STG\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\IMT to STG\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\IMT to STG.Paths[Data Conversion Output]"
+              endId="Package\IMT to STG\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\IMT to STG\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\IMT to STG.Paths[Flat File Source Output]"
+              endId="Package\IMT to STG\Data Conversion.Inputs[Data Conversion Input]"
+              name="Flat File Source Output"
+              startId="Package\IMT to STG\Flat File Source 1.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\INSERT INTO History"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{0E45AB1A-34C1-4CC8-A0FE-F5E0413E8DB7}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="INSERT INTO History"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{99E97528-8FCF-4525-B4B0-0737044BD6D9}"
+          SQLTask:SqlStatementSource="INSERT INTO [CRTDB].[dbo].[t_uk_gen_siox_agent]&#xA;SELECT  [Date]&#xA;      ,[Site]&#xA;      ,[Campaign]&#xA;      ,[Team]&#xA;      ,[Agent]&#xA;      ,[Login Time]&#xA;      ,[Tickets]&#xA;&#x9;  ,REPLACE([Work Time],'60','59') AS [Work Time]&#xA;&#x9;  ,case when try_convert(datetime,REPLACE([AHT],'60','59'))is null&#xA;&#x9;&#x9;then null&#xA;&#x9;&#x9;else convert(datetime,REPLACE([AHT],'60','59')) end AS [AHT]&#xA;      ,[SL %]&#xA;&#x9;  ,REPLACE([Productive Time],'60','59') AS [Productive Time]&#xA;&#x9;  ,REPLACE([Non-Productive Time],'60','59') AS [Non-Productive Time]&#xA;&#x9;  ,REPLACE([Break Time],'60','59') AS [Break Time]&#xA;&#x9;  ,REPLACE([Idle Time],'60','59') AS [Idle Time]&#xA;      ,[Occupancy]&#xA;      ,[Utilisation]&#xA;      ,[Sx Project ID]&#xA;      ,[ID Team]&#xA;      ,case when try_convert(datetime,REPLACE([BREAK],'60','59'))is null&#xA;&#x9;&#x9;then null&#xA;&#x9;&#x9;else convert(datetime,REPLACE([BREAK],'60','59')) end AS [BREAK]&#xA;      ,[Employee ID]&#xA;  FROM [CRTDB].[dbo].[t_uk_gen_siox_agent_stg]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TRUNC STG"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{3C5C1913-D87F-44B3-8873-D56533FE7069}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TRUNC STG"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{99E97528-8FCF-4525-B4B0-0737044BD6D9}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[t_uk_gen_siox_agent_stg] " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TRUNC STG t_uk_gen_siox_agent_stg"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{AAFE4F58-4CCA-4DA3-92A8-C15D0042D8B9}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TRUNC STG t_uk_gen_siox_agent_stg"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{99E97528-8FCF-4525-B4B0-0737044BD6D9}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[t_uk_gen_siox_agent_stg] " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{DE8F6D10-DCD5-4B09-B70B-D86CF57CB5B9}"
+      DTS:From="Package\TRUNC STG t_uk_gen_siox_agent_stg"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\IMT to STG" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{202D6D5C-7548-4066-BAF2-791D95ACE248}"
+      DTS:From="Package\IMT to STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DELETE Existing records" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{0F78327C-011C-410D-8105-1CEA96BCBB2E}"
+      DTS:From="Package\DELETE Existing records"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\INSERT INTO History" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{19D20DE7-FAD5-4DC6-8482-917F7E3DCCDB}"
+      DTS:From="Package\INSERT INTO History"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\TRUNC STG" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="193,43"
+          Id="Package\DELETE Existing records"
+          TopLeft="98,313" />
+        <NodeLayout
+          Size="133,42"
+          Id="Package\IMT to STG"
+          TopLeft="121,110" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\INSERT INTO History"
+          TopLeft="109,390" />
+        <NodeLayout
+          Size="135,42"
+          Id="Package\TRUNC STG"
+          TopLeft="111,466" />
+        <NodeLayout
+          Size="259,42"
+          Id="Package\TRUNC STG t_uk_gen_siox_agent_stg"
+          TopLeft="104,37" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="233.5,79">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-46,31"
+              Start="0,0"
+              End="-46,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.5"
+                    Point2="0,15.5"
+                    Point3="-4,15.5" />
+                  <mssgle:LineSegment
+                    End="-42,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-42,15.5"
+                    Point2="-46,15.5"
+                    Point3="-46,19.5" />
+                  <mssgle:LineSegment
+                    End="-46,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="196.5,356">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34"
+              Start="0,0"
+              End="0,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="198.5,432">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-20,34"
+              Start="0,0"
+              End="-20,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13"
+                    Point2="0,17"
+                    Point3="-4,17" />
+                  <mssgle:LineSegment
+                    End="-16,17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-16,17"
+                    Point2="-20,17"
+                    Point3="-20,21" />
+                  <mssgle:LineSegment
+                    End="-20,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="191,152">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,161"
+              Start="0,0"
+              End="0,153.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,153.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\IMT to STG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="160,42"
+          Id="Package\IMT to STG\Flat File Source 1"
+          TopLeft="421,74" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\IMT to STG\OLE DB Destination"
+          TopLeft="405,410" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\IMT to STG\Data Conversion"
+          TopLeft="348,250" />
+        <EdgeLayout
+          Id="Package\IMT to STG.Paths[Flat File Source Output]"
+          TopLeft="501,116">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-75,134"
+              Start="0,0"
+              End="-75,126.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,63"
+                    Point2="0,67"
+                    Point3="-4,67" />
+                  <mssgle:LineSegment
+                    End="-71,67" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-71,67"
+                    Point2="-75,67"
+                    Point3="-75,71" />
+                  <mssgle:LineSegment
+                    End="-75,126.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\IMT to STG.Paths[Data Conversion Output]"
+          TopLeft="426,292">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="64.5,118"
+              Start="0,0"
+              End="64.5,110.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,55"
+                    Point2="0,59"
+                    Point3="4,59" />
+                  <mssgle:LineSegment
+                    End="60.5,59" />
+                  <mssgle:CubicBezierSegment
+                    Point1="60.5,59"
+                    Point2="64.5,59"
+                    Point3="64.5,63" />
+                  <mssgle:LineSegment
+                    End="64.5,110.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\IMT to STG\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

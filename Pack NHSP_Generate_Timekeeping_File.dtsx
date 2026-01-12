@@ -1,0 +1,714 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/26/2020 10:49:34 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BG279L-FIN6PZBT"
+  DTS:CreatorName="EMEA\gtsat001"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{DA43767D-304E-430D-937C-14A6DDA022E6}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3026.27"
+  DTS:LocaleID="2057"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="Pack NHSP_Generate_Timekeeping_File"
+  DTS:VersionBuild="59"
+  DTS:VersionGUID="{2672C3D9-B2C9-48B1-B028-70271E0D884F}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionFlatFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{83D3CAF5-4479-4CA3-AB8A-23740BBBE74E}"
+      DTS:ObjectName="DestinationConnectionFlatFile">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"\\"+"\\10.7.16.12\\ssis\\Data Sources\\CS NHS"+"\\NHSP Timekeeping_"
++RIGHT("0" + (DT_WSTR, 2) DATEPART("DD", DATEADD("day", -1, GETDATE())),2)
++RIGHT("0" + (DT_WSTR, 2) DATEPART("MM", DATEADD("day", -1, GETDATE())),2)
++(DT_WSTR, 4) YEAR(DATEADD("day",-1,GETDATE()))+".csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2057"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="\\10.7.16.12\ssis\Data Sources\CS NHS\NHSP Timekeeping_02012021.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="UID"
+              DTS:DTSID="{5D90003E-257F-497F-8AE3-54E244BECAC5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="4000"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ShiftDate"
+              DTS:DTSID="{099974CF-A988-4D54-8009-61203180F7B2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="4000"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="StartTime"
+              DTS:DTSID="{50129434-12EC-4723-A500-39F0CF957305}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="4000"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="EndTime"
+              DTS:DTSID="{651F5E5A-872B-470F-9661-C1AAFDEB93B9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="BreakInMins"
+              DTS:DTSID="{7B8F9F1A-84A6-4445-A22E-4580C19B2438}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="StaffId"
+              DTS:DTSID="{8F95C47C-AA13-46C3-9B95-B21374E4FDFA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="2"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Action"
+              DTS:DTSID="{2333EF47-018B-4D10-A7C9-38B392A1CA9A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="3"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TrustCode"
+              DTS:DTSID="{BF619A29-B1C3-436F-B19F-3EB651DB0563}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="4"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="LocationCode"
+              DTS:DTSID="{AC09EBB9-4171-4D74-B7CC-44470C2DCDBD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MinutesLogged"
+              DTS:DTSID="{ACB87FE0-BE0B-4055-ACD0-BB4F1BB292A0}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[EU999K16SSCDB01.CRTDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B6F59180-4989-4C03-AEC9-DA50C002EB1A}"
+      DTS:ObjectName="EU999K16SSCDB01.CRTDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=EU999K16SSCDB01;Initial Catalog=CRTDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{ABA577B0-2536-4DE9-8740-723EE41D0180}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="OutputFIle">
+      <DTS:VariableValue
+        DTS:DataType="8">"\\"+"\\10.7.16.12\\ssis\\Data Sources\\RN"+"\\JL_Daily Mailbox Volumes"+(DT_WSTR, 4) YEAR(DATEADD("day",-1,GETDATE())) +RIGHT("0" + (DT_WSTR, 2) DATEPART("MM", DATEADD("day", -1, GETDATE())),2) +RIGHT("0" + (DT_WSTR, 2) DATEPART("DD", DATEADD("day", -1, GETDATE())),2)+".txt"</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Generate CSV"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{a8610a42-019e-4ac2-a14d-db87ca72469b}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Generate CSV"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Flat File Destination"
+              localeId="2057"
+              name="Destination _Data Sources_CS NHSP Timekeeping"
+              validateExternalMetadata="False">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionFlatFile]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionFlatFile]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].Columns[UID]"
+                      cachedDataType="i4"
+                      cachedName="UID"
+                      externalMetadataColumnId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].ExternalColumns[UID]"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[UID]" />
+                    <inputColumn
+                      refId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].Columns[ShiftDate]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="ShiftDate"
+                      externalMetadataColumnId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].ExternalColumns[ShiftDate]"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[ShiftDate]" />
+                    <inputColumn
+                      refId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].Columns[StartTime]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="StartTime"
+                      externalMetadataColumnId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].ExternalColumns[StartTime]"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[StartTime]" />
+                    <inputColumn
+                      refId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].Columns[EndTime]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="EndTime"
+                      externalMetadataColumnId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].ExternalColumns[EndTime]"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[EndTime]" />
+                    <inputColumn
+                      refId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].Columns[BreakInMins]"
+                      cachedDataType="i4"
+                      cachedName="BreakInMins"
+                      externalMetadataColumnId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].ExternalColumns[BreakInMins]"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[BreakInMins]" />
+                    <inputColumn
+                      refId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].Columns[StaffId]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="StaffId"
+                      externalMetadataColumnId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].ExternalColumns[StaffId]"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[StaffId]" />
+                    <inputColumn
+                      refId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].Columns[Action]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="Action"
+                      externalMetadataColumnId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].ExternalColumns[Action]"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Action]" />
+                    <inputColumn
+                      refId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].Columns[TrustCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="TrustCode"
+                      externalMetadataColumnId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].ExternalColumns[TrustCode]"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[TrustCode]" />
+                    <inputColumn
+                      refId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].Columns[LocationCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="LocationCode"
+                      externalMetadataColumnId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].ExternalColumns[LocationCode]"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[LocationCode]" />
+                    <inputColumn
+                      refId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].Columns[MinutesLogged]"
+                      cachedDataType="i4"
+                      cachedName="MinutesLogged"
+                      externalMetadataColumnId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].ExternalColumns[MinutesLogged]"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[MinutesLogged]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].ExternalColumns[UID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="UID" />
+                    <externalMetadataColumn
+                      refId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].ExternalColumns[ShiftDate]"
+                      dataType="date"
+                      name="ShiftDate" />
+                    <externalMetadataColumn
+                      refId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].ExternalColumns[StartTime]"
+                      dataType="date"
+                      name="StartTime" />
+                    <externalMetadataColumn
+                      refId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].ExternalColumns[EndTime]"
+                      dataType="date"
+                      name="EndTime" />
+                    <externalMetadataColumn
+                      refId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].ExternalColumns[BreakInMins]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="BreakInMins" />
+                    <externalMetadataColumn
+                      refId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].ExternalColumns[StaffId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="StaffId" />
+                    <externalMetadataColumn
+                      refId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].ExternalColumns[Action]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Action" />
+                    <externalMetadataColumn
+                      refId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].ExternalColumns[TrustCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TrustCode" />
+                    <externalMetadataColumn
+                      refId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].ExternalColumns[LocationCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="LocationCode" />
+                    <externalMetadataColumn
+                      refId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input].ExternalColumns[MinutesLogged]"
+                      dataType="numeric"
+                      name="MinutesLogged"
+                      precision="18" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Generate CSV\OLE DB Source 1"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source 1"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[NHSP_Timekeeping]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Generate CSV\OLE DB Source 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[EU999K16SSCDB01.CRTDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[EU999K16SSCDB01.CRTDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[UID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[UID]"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[UID]"
+                      name="UID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[ShiftDate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[ShiftDate]"
+                      length="4000"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[ShiftDate]"
+                      name="ShiftDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[StartTime]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[StartTime]"
+                      length="4000"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[StartTime]"
+                      name="StartTime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[EndTime]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[EndTime]"
+                      length="4000"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[EndTime]"
+                      name="EndTime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[BreakInMins]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[BreakInMins]"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[BreakInMins]"
+                      name="BreakInMins"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[StaffId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[StaffId]"
+                      length="100"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[StaffId]"
+                      name="StaffId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Action]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Action]"
+                      length="2"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Action]"
+                      name="Action"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[TrustCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[TrustCode]"
+                      length="3"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[TrustCode]"
+                      name="TrustCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[LocationCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[LocationCode]"
+                      length="4"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[LocationCode]"
+                      name="LocationCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[MinutesLogged]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[MinutesLogged]"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[MinutesLogged]"
+                      name="MinutesLogged"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[UID]"
+                      dataType="i4"
+                      name="UID" />
+                    <externalMetadataColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[ShiftDate]"
+                      dataType="wstr"
+                      length="4000"
+                      name="ShiftDate" />
+                    <externalMetadataColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[StartTime]"
+                      dataType="wstr"
+                      length="4000"
+                      name="StartTime" />
+                    <externalMetadataColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[EndTime]"
+                      dataType="wstr"
+                      length="4000"
+                      name="EndTime" />
+                    <externalMetadataColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[BreakInMins]"
+                      dataType="i4"
+                      name="BreakInMins" />
+                    <externalMetadataColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[StaffId]"
+                      dataType="wstr"
+                      length="100"
+                      name="StaffId" />
+                    <externalMetadataColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Action]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="Action" />
+                    <externalMetadataColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[TrustCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="TrustCode" />
+                    <externalMetadataColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[LocationCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="LocationCode" />
+                    <externalMetadataColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[MinutesLogged]"
+                      dataType="i4"
+                      name="MinutesLogged" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[UID]"
+                      dataType="i4"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[UID]"
+                      name="UID" />
+                    <outputColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ShiftDate]"
+                      dataType="wstr"
+                      length="4000"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ShiftDate]"
+                      name="ShiftDate" />
+                    <outputColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[StartTime]"
+                      dataType="wstr"
+                      length="4000"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[StartTime]"
+                      name="StartTime" />
+                    <outputColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[EndTime]"
+                      dataType="wstr"
+                      length="4000"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[EndTime]"
+                      name="EndTime" />
+                    <outputColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[BreakInMins]"
+                      dataType="i4"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[BreakInMins]"
+                      name="BreakInMins" />
+                    <outputColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[StaffId]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[StaffId]"
+                      name="StaffId" />
+                    <outputColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[Action]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[Action]"
+                      name="Action" />
+                    <outputColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[TrustCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[TrustCode]"
+                      name="TrustCode" />
+                    <outputColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[LocationCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[LocationCode]"
+                      name="LocationCode" />
+                    <outputColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[MinutesLogged]"
+                      dataType="i4"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[MinutesLogged]"
+                      name="MinutesLogged" />
+                    <outputColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Generate CSV.Paths[OLE DB Source Output]"
+              endId="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping.Inputs[Flat File Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Generate CSV\OLE DB Source 1.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="143.2,41.6"
+          Id="Package\Generate CSV"
+          TopLeft="127.214287787068,128.511765006174" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Generate CSV">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="159.2,41.6"
+          Id="Package\Generate CSV\OLE DB Source 1"
+          TopLeft="210.285717866859,53.8352948726667" />
+        <NodeLayout
+          Size="313.6,41.6"
+          Id="Package\Generate CSV\Destination _Data Sources_CS NHSP Timekeeping"
+          TopLeft="124.928573462428,203.147060170553" />
+        <EdgeLayout
+          Id="Package\Generate CSV.Paths[OLE DB Source Output]"
+          TopLeft="285.857145664644,95.8352948726667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,107.311765297886"
+              Start="0,0"
+              End="0,99.8117652978863">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,99.8117652978863" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Generate CSV\OLE DB Source 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

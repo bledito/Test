@@ -1,0 +1,1952 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/12/2019 9:59:20 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="EU999K16SSCRP01"
+  DTS:CreatorName="EMEA\gtsat001"
+  DTS:DTSID="{0F1D06A6-4197-4A4A-B290-BF591B07ADEF}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3026.27"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Pack CS_JL_NFF"
+  DTS:PackageType="5"
+  DTS:VersionBuild="141"
+  DTS:VersionGUID="{944362F6-1812-49AB-93E5-3EFCC7A3FB91}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CRT_DB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D369D747-E33E-4704-92F5-5D1A30D1A4CA}"
+      DTS:ObjectName="CRT_DB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=EU999K16SSCDB01;Initial Catalog=CRTDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[NFF Current Week]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{88A9077B-9B96-4B8F-ADEA-F21F5AEB2D38}"
+      DTS:ObjectName="NFF Current Week">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\GB998K12FPS01\Administrative$\Operations\Restricted\John Lewis\8. Data and Insight Team\Dashboard Master Files\EXETER\Raw Data\Troubleshooting (NFF, TVTS, Samsung RR)\NFF current week.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EE8ABD12-F80F-4E74-9EB5-B919133AA50A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="cnt">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C22B38A7-B978-45A4-82E2-B063D8B3880D}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT * FROM __InstanceModificationEvent WITHIN 5 WHERE TargetInstance ISA \&quot;CIM_DataFile\&quot; AND TargetInstance.Name = \&quot;D:\\\\ssis\\\\Data Sources\\\\BO\\\\CRT_UK_GEN_KRONOS.txt\&quot;&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Filepath">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT * FROM __InstanceModificationEvent WITHIN 5 WHERE TargetInstance ISA "CIM_DataFile" AND TargetInstance.Name = "D:\\ssis\\Data Sources\\BO\\CRT_UK_GEN_KRONOS.txt"</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DELETE Existing Records From MASTER where exist in STG"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{9879E223-4BBF-4E42-A499-40A272DDAA70}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DELETE Existing Records From MASTER where exist in STG"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D369D747-E33E-4704-92F5-5D1A30D1A4CA}"
+          SQLTask:SqlStatementSource=" DELETE FROM [CRTDB].[dbo].[t_uk_cs_jl_nff]&#xA; WHERE  EXISTS (SELECT * &#xA;                FROM   [CRTDB].[dbo].[t_uk_cs_jl_nff_stg]&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;AS B &#xA;                WHERE  [CRTDB].[dbo].[t_uk_cs_jl_nff].[Call] = B.[Call] )" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\IMT to t_uk_cs_jl_nff_stg"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{8E5981AB-63C8-49D2-823E-6966F874B393}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="IMT to t_uk_cs_jl_nff_stg"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Year]"
+                      cachedDataType="r8"
+                      cachedName="Year"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Year]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Trading Period]"
+                      cachedDataType="r8"
+                      cachedName="Trading Period"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Trading Period]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Trading Week]"
+                      cachedDataType="r8"
+                      cachedName="Trading Week"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Trading Week]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Call]"
+                      cachedDataType="r8"
+                      cachedName="Call"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Call]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Date Added]"
+                      cachedDataType="date"
+                      cachedName="Date Added"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Date Added]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Client]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Client"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Client]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Servicer]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Servicer"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Servicer]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Industry]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Industry"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Industry]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Brand]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Brand"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Brand]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Product]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Product"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Product]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Call Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Call Type"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Call Type]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Store]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Store"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Store]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Added By]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Added By"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Added By]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Purchase Date]"
+                      cachedDataType="date"
+                      cachedName="Purchase Date"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Purchase Date]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Paid Total]"
+                      cachedDataType="r8"
+                      cachedName="Paid Total"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Paid Total]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Paid Labour]"
+                      cachedDataType="r8"
+                      cachedName="Paid Labour"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Paid Labour]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Paid Parts]"
+                      cachedDataType="r8"
+                      cachedName="Paid Parts"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Paid Parts]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Repair Category]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Repair Category"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Repair Category]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Customer Complaint Desc]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Customer Complaint Desc"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Customer Complaint Desc]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Servicer Performed Desc]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Servicer Performed Desc"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Servicer Performed Desc]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Inputs[Data Conversion Input].Columns[Service Completion Day]"
+                      cachedDataType="date"
+                      cachedName="Service Completion Day"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Service Completion Day]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Inputs[Data Conversion Input].Columns[No Fault Found?]"
+                      cachedDataType="r8"
+                      cachedName="No Fault Found?"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[No Fault Found?]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Inputs[Data Conversion Input].Columns[NFF Type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="NFF Type"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[NFF Type]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Year]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Year]"
+                      name="Copy of Year"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Year]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Trading Period]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Trading Period]"
+                      name="Copy of Trading Period"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Trading Period]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Trading Week]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Trading Week]"
+                      name="Copy of Trading Week"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Trading Week]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Call]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Call]"
+                      name="Copy of Call"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Call]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date Added]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date Added]"
+                      name="Copy of Date Added"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Date Added]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Client]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Client]"
+                      name="Copy of Client"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Client]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Servicer]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Servicer]"
+                      name="Copy of Servicer"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Servicer]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Industry]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Industry]"
+                      name="Copy of Industry"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Industry]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Brand]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Brand]"
+                      name="Copy of Brand"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Brand]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Product]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Product]"
+                      name="Copy of Product"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Product]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Call Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Call Type]"
+                      name="Copy of Call Type"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Call Type]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Store]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Store]"
+                      name="Copy of Store"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Store]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Added By]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Added By]"
+                      name="Copy of Added By"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Added By]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Purchase Date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Purchase Date]"
+                      name="Copy of Purchase Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Purchase Date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Paid Total]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Paid Total]"
+                      name="Copy of Paid Total"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Paid Total]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Paid Labour]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Paid Labour]"
+                      name="Copy of Paid Labour"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Paid Labour]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Paid Parts]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Paid Parts]"
+                      name="Copy of Paid Parts"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Paid Parts]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Repair Category]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Repair Category]"
+                      name="Copy of Repair Category"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Repair Category]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Customer Complaint Desc]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Customer Complaint Desc]"
+                      name="Copy of Customer Complaint Desc"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Customer Complaint Desc]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Servicer Performed Desc]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Servicer Performed Desc]"
+                      name="Copy of Servicer Performed Desc"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Servicer Performed Desc]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Service Completion Day]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Service Completion Day]"
+                      name="Copy of Service Completion Day"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Service Completion Day]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of No Fault Found?]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of No Fault Found?]"
+                      name="Copy of No Fault Found?"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[No Fault Found?]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of NFF Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of NFF Type]"
+                      name="Copy of NFF Type"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[NFF Type]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">'RAW Data | NFF$'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[NFF Current Week]"
+                  connectionManagerRefId="Package.ConnectionManagers[NFF Current Week]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Year]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Year]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Trading Period]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Trading Period]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Trading Period]"
+                      name="Trading Period"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Trading Week]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Trading Week]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Trading Week]"
+                      name="Trading Week"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Call]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Call]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Call]"
+                      name="Call"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Date Added]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Date Added]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Date Added]"
+                      name="Date Added"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Client]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Client]"
+                      length="255"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Client]"
+                      name="Client"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Servicer]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Servicer]"
+                      length="255"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Servicer]"
+                      name="Servicer"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Industry]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Industry]"
+                      length="255"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Industry]"
+                      name="Industry"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Brand]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Brand]"
+                      length="255"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Brand]"
+                      name="Brand"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Product]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product]"
+                      length="255"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Product]"
+                      name="Product"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Call Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Call Type]"
+                      length="255"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Call Type]"
+                      name="Call Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Store]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Store]"
+                      length="255"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Store]"
+                      name="Store"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Added By]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Added By]"
+                      length="255"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Added By]"
+                      name="Added By"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Purchase Date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Purchase Date]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Purchase Date]"
+                      name="Purchase Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Paid Total]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Paid Total]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Paid Total]"
+                      name="Paid Total"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Paid Labour]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Paid Labour]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Paid Labour]"
+                      name="Paid Labour"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Paid Parts]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Paid Parts]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Paid Parts]"
+                      name="Paid Parts"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Repair Category]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Repair Category]"
+                      length="255"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Repair Category]"
+                      name="Repair Category"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Customer Complaint Desc]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Complaint Desc]"
+                      length="255"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Customer Complaint Desc]"
+                      name="Customer Complaint Desc"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Servicer Performed Desc]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Servicer Performed Desc]"
+                      length="255"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Servicer Performed Desc]"
+                      name="Servicer Performed Desc"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Service Completion Day]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Service Completion Day]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[Service Completion Day]"
+                      name="Service Completion Day"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[No Fault Found?]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[No Fault Found?]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[No Fault Found?]"
+                      name="No Fault Found?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[NFF Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[NFF Type]"
+                      length="255"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].Columns[NFF Type]"
+                      name="NFF Type"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Year]"
+                      dataType="r8"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Trading Period]"
+                      dataType="r8"
+                      name="Trading Period" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Trading Week]"
+                      dataType="r8"
+                      name="Trading Week" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Call]"
+                      dataType="r8"
+                      name="Call" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Date Added]"
+                      dataType="date"
+                      name="Date Added" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Client]"
+                      dataType="wstr"
+                      length="255"
+                      name="Client" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Servicer]"
+                      dataType="wstr"
+                      length="255"
+                      name="Servicer" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Industry]"
+                      dataType="wstr"
+                      length="255"
+                      name="Industry" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Brand]"
+                      dataType="wstr"
+                      length="255"
+                      name="Brand" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Call Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Call Type" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Store]"
+                      dataType="wstr"
+                      length="255"
+                      name="Store" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Added By]"
+                      dataType="wstr"
+                      length="255"
+                      name="Added By" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Purchase Date]"
+                      dataType="date"
+                      name="Purchase Date" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Paid Total]"
+                      dataType="r8"
+                      name="Paid Total" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Paid Labour]"
+                      dataType="r8"
+                      name="Paid Labour" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Paid Parts]"
+                      dataType="r8"
+                      name="Paid Parts" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Repair Category]"
+                      dataType="wstr"
+                      length="255"
+                      name="Repair Category" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Complaint Desc]"
+                      dataType="wstr"
+                      length="255"
+                      name="Customer Complaint Desc" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Servicer Performed Desc]"
+                      dataType="wstr"
+                      length="255"
+                      name="Servicer Performed Desc" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[Service Completion Day]"
+                      dataType="date"
+                      name="Service Completion Day" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[No Fault Found?]"
+                      dataType="r8"
+                      name="No Fault Found?" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output].ExternalColumns[NFF Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="NFF Type" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Year]"
+                      dataType="r8"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Year]"
+                      name="Year" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Trading Period]"
+                      dataType="r8"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Trading Period]"
+                      name="Trading Period" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Trading Week]"
+                      dataType="r8"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Trading Week]"
+                      name="Trading Week" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Call]"
+                      dataType="r8"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Call]"
+                      name="Call" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Date Added]"
+                      dataType="date"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Date Added]"
+                      name="Date Added" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Client]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Client]"
+                      name="Client" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Servicer]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Servicer]"
+                      name="Servicer" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Industry]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Industry]"
+                      name="Industry" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Brand]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Brand]"
+                      name="Brand" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Product]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Product]"
+                      name="Product" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Call Type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Call Type]"
+                      name="Call Type" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Store]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Store]"
+                      name="Store" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Added By]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Added By]"
+                      name="Added By" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Purchase Date]"
+                      dataType="date"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Purchase Date]"
+                      name="Purchase Date" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Paid Total]"
+                      dataType="r8"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Paid Total]"
+                      name="Paid Total" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Paid Labour]"
+                      dataType="r8"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Paid Labour]"
+                      name="Paid Labour" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Paid Parts]"
+                      dataType="r8"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Paid Parts]"
+                      name="Paid Parts" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Repair Category]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Repair Category]"
+                      name="Repair Category" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Complaint Desc]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Complaint Desc]"
+                      name="Customer Complaint Desc" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Servicer Performed Desc]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Servicer Performed Desc]"
+                      name="Servicer Performed Desc" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Service Completion Day]"
+                      dataType="date"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[Service Completion Day]"
+                      name="Service Completion Day" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[No Fault Found?]"
+                      dataType="r8"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[No Fault Found?]"
+                      name="No Fault Found?" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[NFF Type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[NFF Type]"
+                      name="NFF Type" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[t_uk_cs_jl_nff_stg]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CRT_DB]"
+                  connectionManagerRefId="Package.ConnectionManagers[CRT_DB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Year]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Year"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Year]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Trading Period]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Trading Period"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Trading Period]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Trading Period]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Trading Week]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Trading Week"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Trading Week]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Trading Week]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Call]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Call"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Call]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Call]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Date Added]"
+                      cachedDataType="date"
+                      cachedName="Copy of Date Added"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date Added]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Date Added]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Client]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Client"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Client]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Client]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Servicer]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Servicer"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Servicer]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Servicer]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Industry]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Industry"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Industry]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Industry]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Brand]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Brand"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Brand]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Brand]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Product]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Product"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Product]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Call Type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Call Type"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Call Type]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Call Type]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Store]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Store"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Store]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Store]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Added By]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Added By"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Added By]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Added By]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Purchase Date]"
+                      cachedDataType="date"
+                      cachedName="Copy of Purchase Date"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Purchase Date]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Purchase Date]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Paid Total]"
+                      cachedDataType="r4"
+                      cachedName="Copy of Paid Total"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Paid Total]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Paid Total]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Paid Labour]"
+                      cachedDataType="r4"
+                      cachedName="Copy of Paid Labour"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Paid Labour]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Paid Labour]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Paid Parts]"
+                      cachedDataType="i4"
+                      cachedName="Copy of Paid Parts"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Paid Parts]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Paid Parts]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Repair Category]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Repair Category"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Repair Category]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Repair Category]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Customer Complaint Desc]"
+                      cachedDataType="nText"
+                      cachedName="Copy of Customer Complaint Desc"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer Complaint Desc]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Customer Complaint Desc]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Servicer Performed Desc]"
+                      cachedDataType="nText"
+                      cachedName="Copy of Servicer Performed Desc"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Servicer Performed Desc]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Servicer Performed Desc]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Service Completion Day]"
+                      cachedDataType="date"
+                      cachedName="Copy of Service Completion Day"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Service Completion Day]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Service Completion Day]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of No Fault Found?]"
+                      cachedDataType="i4"
+                      cachedName="Copy of No Fault Found?"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[No Fault Found?]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of No Fault Found?]" />
+                    <inputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of NFF Type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of NFF Type"
+                      externalMetadataColumnId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NFF Type]"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of NFF Type]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      dataType="i4"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Trading Period]"
+                      dataType="i4"
+                      name="Trading Period" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Trading Week]"
+                      dataType="i4"
+                      name="Trading Week" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Call]"
+                      dataType="i4"
+                      name="Call" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date Added]"
+                      dataType="dbDate"
+                      name="Date Added" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Client]"
+                      dataType="wstr"
+                      length="50"
+                      name="Client" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Servicer]"
+                      dataType="wstr"
+                      length="50"
+                      name="Servicer" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Industry]"
+                      dataType="wstr"
+                      length="50"
+                      name="Industry" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Brand]"
+                      dataType="wstr"
+                      length="50"
+                      name="Brand" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product]"
+                      dataType="wstr"
+                      length="50"
+                      name="Product" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Call Type]"
+                      dataType="wstr"
+                      length="50"
+                      name="Call Type" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Store]"
+                      dataType="wstr"
+                      length="50"
+                      name="Store" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Added By]"
+                      dataType="wstr"
+                      length="50"
+                      name="Added By" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Purchase Date]"
+                      dataType="dbDate"
+                      name="Purchase Date" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Paid Total]"
+                      dataType="r8"
+                      name="Paid Total" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Paid Labour]"
+                      dataType="r8"
+                      name="Paid Labour" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Paid Parts]"
+                      dataType="r8"
+                      name="Paid Parts" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Repair Category]"
+                      dataType="wstr"
+                      length="50"
+                      name="Repair Category" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer Complaint Desc]"
+                      dataType="nText"
+                      name="Customer Complaint Desc" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Servicer Performed Desc]"
+                      dataType="nText"
+                      name="Servicer Performed Desc" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Service Completion Day]"
+                      dataType="dbDate"
+                      name="Service Completion Day" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[No Fault Found?]"
+                      dataType="i4"
+                      name="No Fault Found?" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NFF Type]"
+                      dataType="wstr"
+                      length="50"
+                      name="NFF Type" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\IMT to t_uk_cs_jl_nff_stg.Paths[Data Conversion Output]"
+              endId="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\IMT to t_uk_cs_jl_nff_stg.Paths[Excel Source Output]"
+              endId="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion.Inputs[Data Conversion Input]"
+              name="Excel Source Output"
+              startId="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\INSERT INTO MASTER"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{7DD995EE-FCB3-45FE-A6E7-A17D46CEABB3}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="INSERT INTO MASTER"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D369D747-E33E-4704-92F5-5D1A30D1A4CA}"
+          SQLTask:SqlStatementSource="INSERT INTO [CRTDB].[dbo].[t_uk_cs_jl_nff]&#xA;SELECT [Year]&#xA;      ,[Trading Period]&#xA;      ,[Trading Week]&#xA;      ,[Call]&#xA;      ,[Date Added]&#xA;      ,[Client]&#xA;      ,[Servicer]&#xA;      ,[Industry]&#xA;      ,[Brand]&#xA;      ,[Product]&#xA;      ,[Call Type]&#xA;      ,[Store]&#xA;      ,[Added By]&#xA;      ,[Purchase Date]&#xA;      ,[Paid Total]&#xA;      ,[Paid Labour]&#xA;      ,[Paid Parts]&#xA;      ,[Repair Category]&#xA;      ,[Customer Complaint Desc]&#xA;      ,[Servicer Performed Desc]&#xA;      ,[Service Completion Day]&#xA;      ,[No Fault Found?]&#xA;      ,[NFF Type]&#xA;  FROM [CRTDB].[dbo].[t_uk_cs_jl_nff_stg]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TRUNC STG"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{57C01EB1-6211-4747-91FF-30F91AC17364}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TRUNC STG"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D369D747-E33E-4704-92F5-5D1A30D1A4CA}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [CRTDB].[dbo].[t_uk_cs_jl_nff_stg]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TRUNC STG t_uk_cs_jl_nff_stg"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{8AF78E0F-75BE-4383-879C-91480F438829}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TRUNC STG t_uk_cs_jl_nff_stg"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D369D747-E33E-4704-92F5-5D1A30D1A4CA}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[t_uk_cs_jl_nff_stg]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{D40A0190-497F-47A9-85AF-7BFD25936194}"
+      DTS:From="Package\IMT to t_uk_cs_jl_nff_stg"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DELETE Existing Records From MASTER where exist in STG" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{4102F9B8-9A33-4D92-9E1C-9F1E59D36B3E}"
+      DTS:From="Package\TRUNC STG t_uk_cs_jl_nff_stg"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\IMT to t_uk_cs_jl_nff_stg" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 26]"
+      DTS:CreationName=""
+      DTS:DTSID="{30CE6D2F-35D2-4307-9374-8B32FCAFD6BC}"
+      DTS:From="Package\DELETE Existing Records From MASTER where exist in STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 26"
+      DTS:To="Package\INSERT INTO MASTER" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 27]"
+      DTS:CreationName=""
+      DTS:DTSID="{C6D70AF0-76AF-44D6-93D1-2DAF1B5B4C39}"
+      DTS:From="Package\INSERT INTO MASTER"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 27"
+      DTS:To="Package\TRUNC STG" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="358,42"
+          Id="Package\DELETE Existing Records From MASTER where exist in STG"
+          TopLeft="68,267.976471737924" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\IMT to t_uk_cs_jl_nff_stg"
+          TopLeft="121,197.976471737924" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\INSERT INTO MASTER"
+          TopLeft="149,337.976471737924" />
+        <NodeLayout
+          Size="135,42"
+          Id="Package\TRUNC STG"
+          TopLeft="167,406.976471737924" />
+        <NodeLayout
+          Size="224,42"
+          Id="Package\TRUNC STG t_uk_cs_jl_nff_stg"
+          TopLeft="116,113.976471737924" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="220.5,239.976471737924">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="26.5,28"
+              Start="0,0"
+              End="26.5,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10"
+                    Point2="0,14"
+                    Point3="4,14" />
+                  <mssgle:LineSegment
+                    End="22.5,14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="22.5,14"
+                    Point2="26.5,14"
+                    Point3="26.5,18" />
+                  <mssgle:LineSegment
+                    End="26.5,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="224.25,155.976471737924">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 26]"
+          TopLeft="244.5,309.976471737924">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28"
+              Start="0,0"
+              End="0,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 27]"
+          TopLeft="238.25,379.976471737924">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27.0000000000001"
+              Start="0,0"
+              End="0,19.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\IMT to t_uk_cs_jl_nff_stg">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination"
+          TopLeft="107,207" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source"
+          TopLeft="123,60" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\IMT to t_uk_cs_jl_nff_stg\Data Conversion"
+          TopLeft="113,140" />
+        <EdgeLayout
+          Id="Package\IMT to t_uk_cs_jl_nff_stg.Paths[Excel Source Output]"
+          TopLeft="191.75,102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\IMT to t_uk_cs_jl_nff_stg.Paths[Data Conversion Output]"
+          TopLeft="191.75,182">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25"
+              Start="0,0"
+              End="0,17.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\IMT to t_uk_cs_jl_nff_stg\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\IMT to t_uk_cs_jl_nff_stg\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

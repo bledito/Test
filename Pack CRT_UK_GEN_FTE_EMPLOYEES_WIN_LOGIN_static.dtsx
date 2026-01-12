@@ -1,0 +1,1241 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/12/2019 9:59:20 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="EU999K16SSCRP01"
+  DTS:CreatorName="EMEA\gtsat001"
+  DTS:DTSID="{56B5A6FA-5555-45F4-A3EF-90B65FB6D0B1}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3026.27"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="63"
+  DTS:VersionGUID="{47145E10-C68A-406A-8CAB-A3CE3AF06C3E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[EU999K16SSCDB01.CRTDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A17FDA77-B1D7-4812-B096-B8D14006EE4F}"
+      DTS:ObjectName="EU999K16SSCDB01.CRTDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=EU999K16SSCDB01;Initial Catalog=CRTDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{68074787-E6EC-469E-BE6A-F66EBFB2EC0E}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2057"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="\\10.7.16.12\ssis\Data Sources\BO\CRT_UK_GEN_FTE_EMPLOYEES_WIN_LOGIN.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Employee ID"
+              DTS:DTSID="{801269A1-8BA8-4B01-B0E9-E6DCCE2B2FC0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Start Date"
+              DTS:DTSID="{CF04F4CE-11D1-4BF7-8F71-52D269213A7F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="End Date"
+              DTS:DTSID="{A0B21DDD-13FF-4CAA-87C3-0A5CC3438B01}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Windows ID"
+              DTS:DTSID="{116C87F6-25E8-4F88-9893-3FB3E230C16F}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[WMI Connection Manager]"
+      DTS:CreationName="WMI"
+      DTS:DTSID="{56A0CFF0-6360-4B7A-ACEC-F3D3B08FA8B5}"
+      DTS:ObjectName="WMI Connection Manager">
+      <DTS:ObjectData>
+        <WmiConnectionManager
+          ConnectionString="ServerName=\\localhost;Namespace=\root\cimv2;UseNtAuth=True;UserName=;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{08148A35-499D-4F73-A622-BA44DB17AC64}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT * FROM __InstanceModificationEvent WITHIN 5 WHERE TargetInstance ISA \&quot;CIM_DataFile\&quot; AND TargetInstance.Name = \&quot;D:\\\\ssis\\\\Data Sources\\\\BO\\\\CRT_UK_GEN_FTE_EMPLOYEES_WIN_LOGIN.txt\&quot;&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Filepath">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT * FROM __InstanceModificationEvent WITHIN 5 WHERE TargetInstance ISA "CIM_DataFile" AND TargetInstance.Name = "D:\\ssis\\Data Sources\\BO\\CRT_UK_GEN_FTE_EMPLOYEES_WIN_LOGIN.txt"</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DELETE Existing records 1 2 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{AD33C3FF-9453-43E6-B30A-B34FAC8ACEDB}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DELETE Existing records 1 2 1"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A17FDA77-B1D7-4812-B096-B8D14006EE4F}"
+          SQLTask:SqlStatementSource="DELETE FROM [dbo].t_uk_gen_fte_windows_login&#xA;WHERE  EXISTS (SELECT *&#xA;               FROM   t_uk_gen_fte_windows_login_stg             AS B &#xA;               WHERE  t_uk_gen_fte_windows_login.[Employee ID] =  ( CASE WHEN ISNUMERIC([Employee ID]) =1  THEN [Employee ID] &#xA;&#x9;   ELSE&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;   RIGHT([Employee ID], CHARINDEX(':', REVERSE([Employee ID]))-1) END)&#xA;      AND ISNULL(t_uk_gen_fte_windows_login.[Windows ID],999999999) = ISNULL(b.[Windows ID],999999999)&#xA;      )" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DELETE Existing records 1 2 1 2"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{2749717B-F0E7-4281-9518-0DEEC977305D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DELETE Existing records 1 2 1 2"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A17FDA77-B1D7-4812-B096-B8D14006EE4F}"
+          SQLTask:SqlStatementSource="DELETE FROM [dbo].[t_uk_gen_tel_login_logout1] &#xA;&#x9;&#x9;&#xA;&#xA;                          WHERE  EXISTS &#xA;                                   (SELECT * &#xA;                                    FROM   [t_uk_gen_tel_login_logout_stg2] B &#xA;                                    WHERE  [t_uk_gen_tel_login_logout1].[date] = b.Date&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;AND [t_uk_gen_tel_login_logout1].[Login ID] = b.[Login ID]&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;AND [t_uk_gen_tel_login_logout1].[Switch Sequence] = B.[Switch Sequence]&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;AND [t_uk_gen_tel_login_logout1].Site = B.Site&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\IMT to STG 1 2 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{2491FD17-38A0-42B3-A964-CCCC3969B81E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="IMT to STG 1 2 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\IMT to STG 1 2 1\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\IMT to STG 1 2 1\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\IMT to STG 1 2 1\Data Conversion.Inputs[Data Conversion Input].Columns[Employee ID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Employee ID"
+                      lineageId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Output].Columns[Employee ID]" />
+                    <inputColumn
+                      refId="Package\IMT to STG 1 2 1\Data Conversion.Inputs[Data Conversion Input].Columns[Start Date]"
+                      cachedDataType="date"
+                      cachedName="Start Date"
+                      lineageId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Output].Columns[Start Date]" />
+                    <inputColumn
+                      refId="Package\IMT to STG 1 2 1\Data Conversion.Inputs[Data Conversion Input].Columns[End Date]"
+                      cachedDataType="date"
+                      cachedName="End Date"
+                      lineageId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Output].Columns[End Date]" />
+                    <inputColumn
+                      refId="Package\IMT to STG 1 2 1\Data Conversion.Inputs[Data Conversion Input].Columns[Windows ID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Windows ID"
+                      lineageId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Output].Columns[Windows ID]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\IMT to STG 1 2 1\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\IMT to STG 1 2 1\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\IMT to STG 1 2 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Employee ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\IMT to STG 1 2 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Employee ID]"
+                      name="Copy of Employee ID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Output].Columns[Employee ID]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG 1 2 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Start Date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to STG 1 2 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Start Date]"
+                      name="Copy of Start Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Output].Columns[Start Date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG 1 2 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of End Date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\IMT to STG 1 2 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of End Date]"
+                      name="Copy of End Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Output].Columns[End Date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG 1 2 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Windows ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\IMT to STG 1 2 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Windows ID]"
+                      name="Copy of Windows ID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Output].Columns[Windows ID]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\IMT to STG 1 2 1\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\IMT to STG 1 2 1\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\IMT to STG 1 2 1\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\IMT to STG 1 2 1\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\IMT to STG 1 2 1\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\IMT to STG 1 2 1\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\IMT to STG 1 2 1\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="2057"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\IMT to STG 1 2 1\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Output].Columns[Employee ID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Employee ID]"
+                      length="50"
+                      lineageId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Output].Columns[Employee ID]"
+                      name="Employee ID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Output].Columns[Start Date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Start Date]"
+                      lineageId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Output].Columns[Start Date]"
+                      name="Start Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Output].Columns[End Date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[End Date]"
+                      lineageId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Output].Columns[End Date]"
+                      name="End Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Output].Columns[Windows ID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Windows ID]"
+                      length="50"
+                      lineageId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Output].Columns[Windows ID]"
+                      name="Windows ID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Employee ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Employee ID" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Start Date]"
+                      dataType="date"
+                      name="Start Date" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[End Date]"
+                      dataType="date"
+                      name="End Date" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Windows ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Windows ID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\IMT to STG 1 2 1\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[t_uk_gen_fte_windows_login_stg]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\IMT to STG 1 2 1\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[EU999K16SSCDB01.CRTDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[EU999K16SSCDB01.CRTDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\IMT to STG 1 2 1\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\IMT to STG 1 2 1\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Start Date]"
+                      cachedDataType="date"
+                      cachedName="Copy of Start Date"
+                      externalMetadataColumnId="Package\IMT to STG 1 2 1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Start Date]"
+                      lineageId="Package\IMT to STG 1 2 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Start Date]" />
+                    <inputColumn
+                      refId="Package\IMT to STG 1 2 1\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of End Date]"
+                      cachedDataType="date"
+                      cachedName="Copy of End Date"
+                      externalMetadataColumnId="Package\IMT to STG 1 2 1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[End Date]"
+                      lineageId="Package\IMT to STG 1 2 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of End Date]" />
+                    <inputColumn
+                      refId="Package\IMT to STG 1 2 1\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Employee ID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Copy of Employee ID"
+                      externalMetadataColumnId="Package\IMT to STG 1 2 1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Employee ID]"
+                      lineageId="Package\IMT to STG 1 2 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Employee ID]" />
+                    <inputColumn
+                      refId="Package\IMT to STG 1 2 1\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of Windows ID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Copy of Windows ID"
+                      externalMetadataColumnId="Package\IMT to STG 1 2 1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Windows ID]"
+                      lineageId="Package\IMT to STG 1 2 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Windows ID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG 1 2 1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Employee ID]"
+                      dataType="wstr"
+                      length="255"
+                      name="Employee ID" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG 1 2 1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Start Date]"
+                      dataType="dbTimeStamp"
+                      name="Start Date" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG 1 2 1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[End Date]"
+                      dataType="dbTimeStamp"
+                      name="End Date" />
+                    <externalMetadataColumn
+                      refId="Package\IMT to STG 1 2 1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Windows ID]"
+                      dataType="wstr"
+                      length="255"
+                      name="Windows ID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\IMT to STG 1 2 1\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\IMT to STG 1 2 1\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\IMT to STG 1 2 1\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\IMT to STG 1 2 1\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\IMT to STG 1 2 1\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\IMT to STG 1 2 1\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\IMT to STG 1 2 1.Paths[Data Conversion Output]"
+              endId="Package\IMT to STG 1 2 1\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\IMT to STG 1 2 1\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\IMT to STG 1 2 1.Paths[Flat File Source Output]"
+              endId="Package\IMT to STG 1 2 1\Data Conversion.Inputs[Data Conversion Input]"
+              name="Flat File Source Output"
+              startId="Package\IMT to STG 1 2 1\Flat File Source.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\INSERT in STG 2"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{F2B006B7-9E0B-4C77-A9A8-C1C52B2E5EE6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="INSERT in STG 2"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A17FDA77-B1D7-4812-B096-B8D14006EE4F}"
+          SQLTask:SqlStatementSource="INSERT INTO [t_uk_gen_tel_login_logout_stg2]&#xA;SELECT &#xA;&#xA;&#x9;&#x9;MIN(A.[Date]) AS Date&#xA;      ,A.[Switch ID]&#xA;      ,A.[Site]&#xA;      ,A.[Login ID]&#xA;      ,A.[Employee ID]&#xA;      ,[Switch Sequence]&#xA;&#x9;  ,MAX(A.[Login to phoneswitch]) AS [Login to phoneswitch]&#xA;&#x9;  ,MAX(A.[Logout from phoneswitch]) AS [Logout from phoneswitch]&#xA;&#xA;&#x9;  FROM&#xA;(SELECT [Date]&#xA;      ,[Switch ID]&#xA;      ,[Site]&#xA;      ,[Login ID]&#xA;      ,[Employee ID]&#xA;      ,[Switch Sequence]&#xA;&#x9;  ,ISNULL([Login to phoneswitch],0) AS [Login to phoneswitch]&#xA;&#xA;      ,ISNULL([Logout from phoneswitch],DATEADD(day, DATEDIFF(day, 0, CAST([Login to phoneswitch] AS Date)), '23:59:00')) AS [Logout from phoneswitch]&#xA;  FROM [CRTDB].[dbo].[t_uk_gen_tel_login_logout_stg]) AS A&#xA;  --  WHERE A.[Switch Sequence] = 1532509403&#xA;  GROUP BY&#xA;&#xA;      A.[Switch ID]&#xA;      ,A.[Site]&#xA;      ,A.[Login ID]&#xA;      ,A.[Employee ID]&#xA;      ,[Switch Sequence]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\INSERT INTO History1 2 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{B1A7A600-A137-4BC8-888E-714FC9697052}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="INSERT INTO History1 2 1"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A17FDA77-B1D7-4812-B096-B8D14006EE4F}"
+          SQLTask:SqlStatementSource="INSERT INTO [dbo].t_uk_gen_fte_windows_login&#xA;SELECT CASE WHEN ISNUMERIC([Employee ID]) =1  THEN [Employee ID] &#xA;&#x9;   ELSE&#x9;&#x9;&#x9;&#x9;&#xA;&#x9;   RIGHT([Employee ID], CHARINDEX(':', REVERSE([Employee ID]))-1) END [Employee ID]&#xA;      ,[Start Date]&#xA;      ,[End Date]&#xA;      ,[Windows ID]&#xA;      ,Getdate()&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;AS [Last Update Date]&#xA;FROM   t_uk_gen_fte_windows_login_stg " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\INSERT INTO History1 2 1 2"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{5D6E116B-D280-4DCB-921C-4B37709B5E8D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="INSERT INTO History1 2 1 2"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A17FDA77-B1D7-4812-B096-B8D14006EE4F}"
+          SQLTask:SqlStatementSource="INSERT INTO [dbo].[t_uk_gen_tel_login_logout1] &#xA;SELECT &#xA;&#xA;&#xA;A.[Date]&#xA;      ,A.[Switch ID]&#xA;      ,A.[Site]&#xA;      ,A.[Login ID]&#xA;      ,A.[Employee ID]&#xA;      ,A.[Switch Sequence]&#xA;      ,A.[Login to phoneswitch]&#xA;      ,A.[Logout from phoneswitch]&#xA;&#x9;  ,b.[Main SKill ID]&#xA; &#xA;FROM   [t_uk_gen_tel_login_logout_stg2] AS A&#xA;LEFT JOIN [dbo].[t_uk_gen_tel_login_main_skill1] AS B&#xA;on A.Date = b.Date&#xA;AND A.Site = b.Site&#xA;AND A.[Login ID] = B.[Login ID]&#xA;AND A.[Switch Sequence] = B.[Switch Sequence]&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TRUNC STG 1 2 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{D1515F65-5E18-441F-9EC2-9ACC6A59BD93}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TRUNC STG 1 2 1"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A17FDA77-B1D7-4812-B096-B8D14006EE4F}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].t_uk_gen_fte_windows_login_stg " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TRUNC STG 1 2 1 2"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{0DF91808-C969-40EB-BF87-EA8ADCE550F0}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TRUNC STG 1 2 1 2"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A17FDA77-B1D7-4812-B096-B8D14006EE4F}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[t_uk_gen_tel_login_logout_stg] &#xA;TRUNCATE TABLE [dbo].[t_uk_gen_tel_login_logout_stg2]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TRUNC STG t_uk_gen_fte_windows_login_stg"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{29746AE8-559F-4701-BCD9-B899FE8AD17D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TRUNC STG t_uk_gen_fte_windows_login_stg"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 CTP2.1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A17FDA77-B1D7-4812-B096-B8D14006EE4F}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].t_uk_gen_fte_windows_login_stg " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\WMI Event Watcher Task"
+      DTS:CreationName="Microsoft.WmiEventWatcherTask"
+      DTS:Description="WMI Event Watcher Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{0CC1A639-68BC-4123-9EC1-B579FE2FDF0F}"
+      DTS:ExecutableType="Microsoft.WmiEventWatcherTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="WMI Event Watcher Task"
+      DTS:TaskContact="WMI Event Watcher Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <WMIEWTaskData
+          WMIConnectionName="{56A0CFF0-6360-4B7A-ACEC-F3D3B08FA8B5}"
+          WQLQuerySourceType="Variable"
+          WQLQuerySource="User::Filepath" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{A7A7307B-EFF0-4817-88FD-D881C010C313}"
+      DTS:From="Package\WMI Event Watcher Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\TRUNC STG t_uk_gen_fte_windows_login_stg" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 20]"
+      DTS:CreationName=""
+      DTS:DTSID="{538FF2C4-1CB5-49AA-9A4D-E48FE58D9A92}"
+      DTS:From="Package\TRUNC STG t_uk_gen_fte_windows_login_stg"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 20"
+      DTS:To="Package\IMT to STG 1 2 1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 21]"
+      DTS:CreationName=""
+      DTS:DTSID="{68F00BB9-FDF9-4547-A425-CCB8DED6BBAD}"
+      DTS:From="Package\IMT to STG 1 2 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 21"
+      DTS:To="Package\DELETE Existing records 1 2 1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 22]"
+      DTS:CreationName=""
+      DTS:DTSID="{CBE270B0-A5B1-4542-86FC-00CD4EDD3A15}"
+      DTS:From="Package\DELETE Existing records 1 2 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 22"
+      DTS:To="Package\INSERT INTO History1 2 1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 23]"
+      DTS:CreationName=""
+      DTS:DTSID="{2812E0FF-B872-4B5E-8EBB-F85172B85DA4}"
+      DTS:From="Package\INSERT INTO History1 2 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 23"
+      DTS:To="Package\TRUNC STG 1 2 1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 39]"
+      DTS:CreationName=""
+      DTS:DTSID="{CFB516B1-18C0-4C98-ADDC-4EA0DFF22988}"
+      DTS:From="Package\INSERT in STG 2"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 39"
+      DTS:To="Package\DELETE Existing records 1 2 1 2" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 40]"
+      DTS:CreationName=""
+      DTS:DTSID="{934B2F4B-550F-453B-A25A-F8EEF9B982F2}"
+      DTS:From="Package\DELETE Existing records 1 2 1 2"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 40"
+      DTS:To="Package\INSERT INTO History1 2 1 2" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 41]"
+      DTS:CreationName=""
+      DTS:DTSID="{9F6B78A5-75F0-48B3-B846-DF6F90FB7E7C}"
+      DTS:From="Package\INSERT INTO History1 2 1 2"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 41"
+      DTS:To="Package\TRUNC STG 1 2 1 2" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="212,42"
+          Id="Package\DELETE Existing records 1 2 1"
+          TopLeft="104.571428853638,266.094118882546" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\DELETE Existing records 1 2 1 2"
+          TopLeft="2941,654" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\IMT to STG 1 2 1"
+          TopLeft="104.571428853638,191.094118882546" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\INSERT in STG 2"
+          TopLeft="2964,559" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\INSERT INTO History1 2 1"
+          TopLeft="105.571428853638,336.094118882546" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\INSERT INTO History1 2 1 2"
+          TopLeft="2984,745" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\TRUNC STG 1 2 1"
+          TopLeft="107.571428853638,412.094118882546" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\TRUNC STG 1 2 1 2"
+          TopLeft="3006,812" />
+        <NodeLayout
+          Size="295,42"
+          Id="Package\TRUNC STG t_uk_gen_fte_windows_login_stg"
+          TopLeft="87.5714288536383,118.094118882546" />
+        <NodeLayout
+          Size="198,43"
+          Id="Package\WMI Event Watcher Task"
+          TopLeft="111.000000681196,30.8235170311581" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="209.800000681196,74.0235170311581">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="25.3714281724424,44.0706018513875"
+              Start="0,0"
+              End="25.3714281724424,36.5706018513875">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.0353009256938" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.0353009256938"
+                    Point2="0,22.0353009256938"
+                    Point3="4,22.0353009256938" />
+                  <mssgle:LineSegment
+                    End="21.3714281724424,22.0353009256938" />
+                  <mssgle:CubicBezierSegment
+                    Point1="21.3714281724424,22.0353009256938"
+                    Point2="25.3714281724424,22.0353009256938"
+                    Point3="25.3714281724424,26.0353009256938" />
+                  <mssgle:LineSegment
+                    End="25.3714281724424,36.5706018513875" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 20]"
+          TopLeft="235.171428853638,159.694118882546">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-50.6,31.4"
+              Start="0,0"
+              End="-50.6,23.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.7" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.7"
+                    Point2="0,15.7"
+                    Point3="-4,15.7" />
+                  <mssgle:LineSegment
+                    End="-46.6,15.7" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-46.6,15.7"
+                    Point2="-50.6,15.7"
+                    Point3="-50.6,19.7" />
+                  <mssgle:LineSegment
+                    End="-50.6,23.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 21]"
+          TopLeft="184.571428853638,232.694118882546">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="26,33.4"
+              Start="0,0"
+              End="26,25.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.7" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.7"
+                    Point2="0,16.7"
+                    Point3="4,16.7" />
+                  <mssgle:LineSegment
+                    End="22,16.7" />
+                  <mssgle:CubicBezierSegment
+                    Point1="22,16.7"
+                    Point2="26,16.7"
+                    Point3="26,20.7" />
+                  <mssgle:LineSegment
+                    End="26,25.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 22]"
+          TopLeft="210.571428853638,308.094118882546">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-12.5,28"
+              Start="0,0"
+              End="-12.5,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10"
+                    Point2="0,14"
+                    Point3="-4,14" />
+                  <mssgle:LineSegment
+                    End="-8.5,14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8.5,14"
+                    Point2="-12.5,14"
+                    Point3="-12.5,18" />
+                  <mssgle:LineSegment
+                    End="-12.5,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 23]"
+          TopLeft="198.071428853638,378.094118882546">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-18.5,34"
+              Start="0,0"
+              End="-18.5,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13"
+                    Point2="0,17"
+                    Point3="-4,17" />
+                  <mssgle:LineSegment
+                    End="-14.5,17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-14.5,17"
+                    Point2="-18.5,17"
+                    Point3="-18.5,21" />
+                  <mssgle:LineSegment
+                    End="-18.5,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 39]"
+          TopLeft="3043,601">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="13,53"
+              Start="0,0"
+              End="13,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.5"
+                    Point2="0,26.5"
+                    Point3="4,26.5" />
+                  <mssgle:LineSegment
+                    End="9,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="9,26.5"
+                    Point2="13,26.5"
+                    Point3="13,30.5" />
+                  <mssgle:LineSegment
+                    End="13,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 40]"
+          TopLeft="3056,696">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="20.5,49"
+              Start="0,0"
+              End="20.5,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.5"
+                    Point2="0,24.5"
+                    Point3="4,24.5" />
+                  <mssgle:LineSegment
+                    End="16.5,24.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="16.5,24.5"
+                    Point2="20.5,24.5"
+                    Point3="20.5,28.5" />
+                  <mssgle:LineSegment
+                    End="20.5,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 41]"
+          TopLeft="3077.25,787">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25"
+              Start="0,0"
+              End="0,17.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\IMT to STG 1 2 1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\IMT to STG 1 2 1\Flat File Source"
+          TopLeft="151.428574007385,67.9058833052955" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\IMT to STG 1 2 1\Data Conversion"
+          TopLeft="160,184" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\IMT to STG 1 2 1\OLE DB Destination"
+          TopLeft="156,281" />
+        <EdgeLayout
+          Id="Package\IMT to STG 1 2 1.Paths[Flat File Source Output]"
+          TopLeft="226.628574007385,109.505883305296">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11.3714259926153,74.4941166947045"
+              Start="0,0"
+              End="11.3714259926153,66.9941166947045">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.2470583473522" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.2470583473522"
+                    Point2="0,37.2470583473522"
+                    Point3="4,37.2470583473522" />
+                  <mssgle:LineSegment
+                    End="7.37142599261529,37.2470583473522" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7.37142599261529,37.2470583473522"
+                    Point2="11.3714259926153,37.2470583473522"
+                    Point3="11.3714259926153,41.2470583473522" />
+                  <mssgle:LineSegment
+                    End="11.3714259926153,66.9941166947045" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\IMT to STG 1 2 1.Paths[Data Conversion Output]"
+          TopLeft="239.75,226">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55"
+              Start="0,0"
+              End="0,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\IMT to STG 1 2 1\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,1163 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/26/2020 10:49:34 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BG279L-FIN6PZBT"
+  DTS:CreatorName="EMEA\gtsat001"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{D06BCADE-7964-4A30-9265-F689EDF38502}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3026.27"
+  DTS:LocaleID="2057"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="Pack NHS_Synergy_Agent_Data_Summary"
+  DTS:VersionBuild="69"
+  DTS:VersionGUID="{E337A9BC-2D8E-4691-B5E4-79F75B3A9A56}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CRTDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9B50129E-9D13-4E05-B832-65FAF3C7D45B}"
+      DTS:ObjectName="CRTDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=EU999K16SSCDB01;Initial Catalog=CRTDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CSV Output_File]"
+      DTS:CreationName="FLATFILE"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{DD397EBD-F30D-4364-A3A8-955923A78982}"
+      DTS:ObjectName="CSV Output_File">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2057"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="\\EU974K12FPS03\administrative$\Reporting\Private\Martin\Synergy_Agent_Activity.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="EmployeeID"
+              DTS:DTSID="{5A2A6639-19F5-40A4-BF2C-049FC8118399}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="EmployeeName"
+              DTS:DTSID="{6018B58E-DC4C-4E54-BEE0-88D4AAB41AAF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ManagerID"
+              DTS:DTSID="{D62D9D0C-BF27-4E42-9B2F-0A69494D934C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ManagerName"
+              DTS:DTSID="{A37A18C3-F8BD-4723-BEFD-307ED9935488}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Userlevel"
+              DTS:DTSID="{CAF1525C-9DA8-4DD4-88A1-F5BBDAD8385D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="135"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Adjusted Hire Date"
+              DTS:DTSID="{3EEF0E8A-5139-4037-A951-7F29BFFF505C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Tenure"
+              DTS:DTSID="{4F4F0014-405C-4360-A7E1-659D88A8EC58}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Total Cases Actioned"
+              DTS:DTSID="{96841C7F-15CE-4488-B98B-8A878155FA56}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CSV Output_File_local]"
+      DTS:CreationName="FLATFILE"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{5b40f97b-4029-482a-ba08-b9a0721c9a0e}"
+      DTS:ObjectName="CSV Output_File_local">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2057"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="\\10.7.16.12\ssis\Data Sources\CS NHS\Outputs\Synergy_Agent_Activity.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="EmployeeID"
+              DTS:DTSID="{DA41B6DB-227A-482E-BE5C-3C9F44500324}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="EmployeeName"
+              DTS:DTSID="{EF418101-2B67-4944-9BDF-F420B1CF13A1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ManagerID"
+              DTS:DTSID="{BBA5F114-7D6D-4EEF-847B-A0F8745276B8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ManagerName"
+              DTS:DTSID="{C99C464F-614B-44C6-A1C7-4FE19E008FBC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Userlevel"
+              DTS:DTSID="{9A58FE30-7911-46A2-9EE9-D33704C4B349}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="135"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Adjusted Hire Date"
+              DTS:DTSID="{A9983F12-D4EC-4902-AA71-FEE45C467827}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Tenure"
+              DTS:DTSID="{8225C6B6-6495-4582-B4AD-A1BC0E65C02D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Total Cases Actioned"
+              DTS:DTSID="{D0451C93-86EC-4B81-B9B4-4310F0A4B5C6}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CB33597A-DCA3-45A8-8A0D-A4169E4A9A06}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="OutputFIle">
+      <DTS:VariableValue
+        DTS:DataType="8">"\\"+"\\10.7.16.12\\ssis\\Data Sources\\RN"+"\\JL_Daily Mailbox Volumes"+(DT_WSTR, 4) YEAR(DATEADD("day",-1,GETDATE())) +RIGHT("0" + (DT_WSTR, 2) DATEPART("MM", DATEADD("day", -1, GETDATE())),2) +RIGHT("0" + (DT_WSTR, 2) DATEPART("DD", DATEADD("day", -1, GETDATE())),2)+".txt"</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Generate Synergy Agent Data Summary csv"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:Disabled="True"
+      DTS:DTSID="{312f8a43-b177-4fc6-85e5-4d634c63341a}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Generate Synergy Agent Data Summary csv"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Flat File Destination"
+              localeId="2057"
+              name="Flat File Destination">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CSV Output_File]"
+                  connectionManagerRefId="Package.ConnectionManagers[CSV Output_File]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination.Inputs[Flat File Destination Input].Columns[EmployeeID]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeID"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[EmployeeID]"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[EmployeeID]" />
+                    <inputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination.Inputs[Flat File Destination Input].Columns[EmployeeName]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="EmployeeName"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[EmployeeName]"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[EmployeeName]" />
+                    <inputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination.Inputs[Flat File Destination Input].Columns[ManagerID]"
+                      cachedDataType="i4"
+                      cachedName="ManagerID"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ManagerID]"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[ManagerID]" />
+                    <inputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination.Inputs[Flat File Destination Input].Columns[ManagerName]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="ManagerName"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ManagerName]"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[ManagerName]" />
+                    <inputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination.Inputs[Flat File Destination Input].Columns[Userlevel]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Userlevel"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Userlevel]"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Userlevel]" />
+                    <inputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination.Inputs[Flat File Destination Input].Columns[Adjusted Hire Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Adjusted Hire Date"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Adjusted Hire Date]"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Adjusted Hire Date]" />
+                    <inputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination.Inputs[Flat File Destination Input].Columns[Tenure]"
+                      cachedDataType="i4"
+                      cachedName="Tenure"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Tenure]"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Tenure]" />
+                    <inputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination.Inputs[Flat File Destination Input].Columns[Total Cases Actioned]"
+                      cachedDataType="r8"
+                      cachedName="Total Cases Actioned"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Total Cases Actioned]"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Total Cases Actioned]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[EmployeeName]"
+                      dataType="wstr"
+                      length="100"
+                      name="EmployeeName" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ManagerID]"
+                      dataType="i4"
+                      name="ManagerID" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ManagerName]"
+                      dataType="wstr"
+                      length="100"
+                      name="ManagerName" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Userlevel]"
+                      dataType="wstr"
+                      length="10"
+                      name="Userlevel" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Adjusted Hire Date]"
+                      dataType="dbTimeStamp"
+                      name="Adjusted Hire Date" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Tenure]"
+                      dataType="i4"
+                      name="Tenure" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Total Cases Actioned]"
+                      dataType="r8"
+                      name="Total Cases Actioned" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source 1"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[v_uk_cs_tnt_synergy_agent_data_summary]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CRTDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[CRTDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[EmployeeID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[EmployeeID]"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[EmployeeID]"
+                      name="EmployeeID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[EmployeeName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[EmployeeName]"
+                      length="100"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[EmployeeName]"
+                      name="EmployeeName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[ManagerID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[ManagerID]"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[ManagerID]"
+                      name="ManagerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[ManagerName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[ManagerName]"
+                      length="100"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[ManagerName]"
+                      name="ManagerName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Userlevel]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Userlevel]"
+                      length="10"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Userlevel]"
+                      name="Userlevel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Adjusted Hire Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Adjusted Hire Date]"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Adjusted Hire Date]"
+                      name="Adjusted Hire Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Tenure]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Tenure]"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Tenure]"
+                      name="Tenure"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Total Cases Actioned]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Total Cases Actioned]"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].Columns[Total Cases Actioned]"
+                      name="Total Cases Actioned"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[EmployeeName]"
+                      dataType="wstr"
+                      length="100"
+                      name="EmployeeName" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[ManagerID]"
+                      dataType="i4"
+                      name="ManagerID" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[ManagerName]"
+                      dataType="wstr"
+                      length="100"
+                      name="ManagerName" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Userlevel]"
+                      dataType="wstr"
+                      length="10"
+                      name="Userlevel" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Adjusted Hire Date]"
+                      dataType="dbTimeStamp"
+                      name="Adjusted Hire Date" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Tenure]"
+                      dataType="i4"
+                      name="Tenure" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output].ExternalColumns[Total Cases Actioned]"
+                      dataType="r8"
+                      name="Total Cases Actioned" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[EmployeeID]"
+                      dataType="i4"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[EmployeeID]"
+                      name="EmployeeID" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[EmployeeName]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[EmployeeName]"
+                      name="EmployeeName" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ManagerID]"
+                      dataType="i4"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ManagerID]"
+                      name="ManagerID" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ManagerName]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ManagerName]"
+                      name="ManagerName" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[Userlevel]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[Userlevel]"
+                      name="Userlevel" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[Adjusted Hire Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[Adjusted Hire Date]"
+                      name="Adjusted Hire Date" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[Tenure]"
+                      dataType="i4"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[Tenure]"
+                      name="Tenure" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[Total Cases Actioned]"
+                      dataType="r8"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[Total Cases Actioned]"
+                      name="Total Cases Actioned" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Generate Synergy Agent Data Summary csv.Paths[OLE DB Source Output]"
+              endId="Package\Generate Synergy Agent Data Summary csv\Flat File Destination.Inputs[Flat File Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Generate Synergy Agent Data Summary csv local"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{91769306-8f18-42d2-8f6b-3596c3e3447f}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Generate Synergy Agent Data Summary csv local"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Flat File Destination"
+              localeId="2057"
+              name="Flat File Destination 1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CSV Output_File_local]"
+                  connectionManagerRefId="Package.ConnectionManagers[CSV Output_File_local]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1.Inputs[Flat File Destination Input].Columns[EmployeeID]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeID"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1.Inputs[Flat File Destination Input].ExternalColumns[EmployeeID]"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[EmployeeID]" />
+                    <inputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1.Inputs[Flat File Destination Input].Columns[EmployeeName]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="EmployeeName"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1.Inputs[Flat File Destination Input].ExternalColumns[EmployeeName]"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[EmployeeName]" />
+                    <inputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1.Inputs[Flat File Destination Input].Columns[ManagerID]"
+                      cachedDataType="i4"
+                      cachedName="ManagerID"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1.Inputs[Flat File Destination Input].ExternalColumns[ManagerID]"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[ManagerID]" />
+                    <inputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1.Inputs[Flat File Destination Input].Columns[ManagerName]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="ManagerName"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1.Inputs[Flat File Destination Input].ExternalColumns[ManagerName]"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[ManagerName]" />
+                    <inputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1.Inputs[Flat File Destination Input].Columns[Userlevel]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Userlevel"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1.Inputs[Flat File Destination Input].ExternalColumns[Userlevel]"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[Userlevel]" />
+                    <inputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1.Inputs[Flat File Destination Input].Columns[Adjusted Hire Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Adjusted Hire Date"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1.Inputs[Flat File Destination Input].ExternalColumns[Adjusted Hire Date]"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[Adjusted Hire Date]" />
+                    <inputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1.Inputs[Flat File Destination Input].Columns[Tenure]"
+                      cachedDataType="i4"
+                      cachedName="Tenure"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1.Inputs[Flat File Destination Input].ExternalColumns[Tenure]"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[Tenure]" />
+                    <inputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1.Inputs[Flat File Destination Input].Columns[Total Cases Actioned]"
+                      cachedDataType="r8"
+                      cachedName="Total Cases Actioned"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1.Inputs[Flat File Destination Input].ExternalColumns[Total Cases Actioned]"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[Total Cases Actioned]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1.Inputs[Flat File Destination Input].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1.Inputs[Flat File Destination Input].ExternalColumns[EmployeeName]"
+                      dataType="wstr"
+                      length="100"
+                      name="EmployeeName" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1.Inputs[Flat File Destination Input].ExternalColumns[ManagerID]"
+                      dataType="i4"
+                      name="ManagerID" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1.Inputs[Flat File Destination Input].ExternalColumns[ManagerName]"
+                      dataType="wstr"
+                      length="100"
+                      name="ManagerName" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1.Inputs[Flat File Destination Input].ExternalColumns[Userlevel]"
+                      dataType="wstr"
+                      length="10"
+                      name="Userlevel" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1.Inputs[Flat File Destination Input].ExternalColumns[Adjusted Hire Date]"
+                      dataType="dbTimeStamp"
+                      name="Adjusted Hire Date" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1.Inputs[Flat File Destination Input].ExternalColumns[Tenure]"
+                      dataType="i4"
+                      name="Tenure" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1.Inputs[Flat File Destination Input].ExternalColumns[Total Cases Actioned]"
+                      dataType="r8"
+                      name="Total Cases Actioned" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source 1 1"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[v_uk_cs_tnt_synergy_agent_data_summary]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CRTDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[CRTDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[EmployeeID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].ExternalColumns[EmployeeID]"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[EmployeeID]"
+                      name="EmployeeID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[EmployeeName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].ExternalColumns[EmployeeName]"
+                      length="100"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[EmployeeName]"
+                      name="EmployeeName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[ManagerID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].ExternalColumns[ManagerID]"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[ManagerID]"
+                      name="ManagerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[ManagerName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].ExternalColumns[ManagerName]"
+                      length="100"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[ManagerName]"
+                      name="ManagerName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[Userlevel]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].ExternalColumns[Userlevel]"
+                      length="10"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[Userlevel]"
+                      name="Userlevel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[Adjusted Hire Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].ExternalColumns[Adjusted Hire Date]"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[Adjusted Hire Date]"
+                      name="Adjusted Hire Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[Tenure]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].ExternalColumns[Tenure]"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[Tenure]"
+                      name="Tenure"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[Total Cases Actioned]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].ExternalColumns[Total Cases Actioned]"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[Total Cases Actioned]"
+                      name="Total Cases Actioned"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].ExternalColumns[EmployeeName]"
+                      dataType="wstr"
+                      length="100"
+                      name="EmployeeName" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].ExternalColumns[ManagerID]"
+                      dataType="i4"
+                      name="ManagerID" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].ExternalColumns[ManagerName]"
+                      dataType="wstr"
+                      length="100"
+                      name="ManagerName" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].ExternalColumns[Userlevel]"
+                      dataType="wstr"
+                      length="10"
+                      name="Userlevel" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].ExternalColumns[Adjusted Hire Date]"
+                      dataType="dbTimeStamp"
+                      name="Adjusted Hire Date" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].ExternalColumns[Tenure]"
+                      dataType="i4"
+                      name="Tenure" />
+                    <externalMetadataColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output].ExternalColumns[Total Cases Actioned]"
+                      dataType="r8"
+                      name="Total Cases Actioned" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[EmployeeID]"
+                      dataType="i4"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[EmployeeID]"
+                      name="EmployeeID" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[EmployeeName]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[EmployeeName]"
+                      name="EmployeeName" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[ManagerID]"
+                      dataType="i4"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[ManagerID]"
+                      name="ManagerID" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[ManagerName]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[ManagerName]"
+                      name="ManagerName" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[Userlevel]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[Userlevel]"
+                      name="Userlevel" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[Adjusted Hire Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[Adjusted Hire Date]"
+                      name="Adjusted Hire Date" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[Tenure]"
+                      dataType="i4"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[Tenure]"
+                      name="Tenure" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[Total Cases Actioned]"
+                      dataType="r8"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[Total Cases Actioned]"
+                      name="Total Cases Actioned" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Generate Synergy Agent Data Summary csv local.Paths[OLE DB Source Output]"
+              endId="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1.Inputs[Flat File Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{66AB9E30-59C4-493C-8FE5-23D6C42AD63D}"
+      DTS:From="Package\Generate Synergy Agent Data Summary csv local"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Generate Synergy Agent Data Summary csv" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="285,42"
+          Id="Package\Generate Synergy Agent Data Summary csv"
+          TopLeft="321.000002656664,278.223529428924" />
+        <NodeLayout
+          Size="240,90"
+          Id="Package\Generate Synergy Agent Data Summary csv local"
+          TopLeft="346.142859750865,152.011764276894" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="464.821431203765,242.011764276894">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36.2117651520302"
+              Start="0,0"
+              End="0,28.7117651520302">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.7117651520302" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Generate Synergy Agent Data Summary csv">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="159.2,41.6"
+          Id="Package\Generate Synergy Agent Data Summary csv\OLE DB Source 1"
+          TopLeft="93.285717866859,58.8352948726667" />
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\Generate Synergy Agent Data Summary csv\Flat File Destination"
+          TopLeft="69,260" />
+        <EdgeLayout
+          Id="Package\Generate Synergy Agent Data Summary csv.Paths[OLE DB Source Output]"
+          TopLeft="172.785717866859,100.835294872667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-17.785717866859,159.164705127333"
+              Start="0,0"
+              End="-17.785717866859,151.664705127333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,75.5823525636666" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,75.5823525636666"
+                    Point2="0,79.5823525636666"
+                    Point3="-4,79.5823525636666" />
+                  <mssgle:LineSegment
+                    End="-13.785717866859,79.5823525636666" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-13.785717866859,79.5823525636666"
+                    Point2="-17.785717866859,79.5823525636666"
+                    Point3="-17.785717866859,83.5823525636666" />
+                  <mssgle:LineSegment
+                    End="-17.785717866859,151.664705127333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Generate Synergy Agent Data Summary csv local">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Generate Synergy Agent Data Summary csv local\OLE DB Source 1 1"
+          TopLeft="336.771435733718,58.8352948726667" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Generate Synergy Agent Data Summary csv local\Flat File Destination 1"
+          TopLeft="312.485717866859,260" />
+        <EdgeLayout
+          Id="Package\Generate Synergy Agent Data Summary csv local.Paths[OLE DB Source Output]"
+          TopLeft="416.271435733718,100.835294872667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-17.785717866859,159.164705127333"
+              Start="0,0"
+              End="-17.785717866859,151.664705127333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,75.5823525636666" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,75.5823525636666"
+                    Point2="0,79.5823525636666"
+                    Point3="-4,79.5823525636666" />
+                  <mssgle:LineSegment
+                    End="-13.785717866859,79.5823525636666" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-13.785717866859,79.5823525636666"
+                    Point2="-17.785717866859,79.5823525636666"
+                    Point3="-17.785717866859,83.5823525636666" />
+                  <mssgle:LineSegment
+                    End="-17.785717866859,151.664705127333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
