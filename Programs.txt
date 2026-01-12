@@ -1,0 +1,55 @@
+Required:
+Microsoft SQL Server 2012 Native Client - 11.4.7462.6
+SSMS - 15.0.18386.0 - \\10.17.25.15\deploy$\Finance DO NOT DELETE\SCCM - vsta_setup.exe
+Microsoft ODBC Driver 11 for SQL Server - 12.2.5543.11
+Microsoft OLE DB Driver for SQL Server - 18.6.3.0
+Visual Studio 2017 Isolated Shell for SSMS - 15.0.28307.421
+Power BI desktop - latest version
+Power BI - on premises data gateway  latest version
+SSIS add-in - with visual studio
+microsoft.oledb.12.0 
+PyCharm/IDLE
+Python 3.10.2
+One Drive activation - IT + ticket approval from Moises Agreda 7494172
+Recording in Teams activation - IT
+Cisco/Cisco account - IT to check  - VPN connection
+Powershell/ISE - with windows IT to check
+Excel Power Query
+DAX Studio
+Tabular Editor
+
+Not IT related:
+
+Outlook 365 account - Poli Golemshinska - exchange email - 7958853 
+Teams/ Teams account - Poli Golemshinska - 7958853 
+Outlook/ CRT Mailbox access - Mail ekip - ticket ID 7422408
+Adding user to DL/GL group 
+BO account - requestor Georgi Tsatsev; replicate account ticket id 7056285
+Generic user & password vacation planner - 7106227
+Power BI account pro - COR team - ticket ID 6934230; 7207166
+ODBC(32 bit) connection SQL server native client 11.0- NAME:CRT_SQL; SERVER: EU999K16SSCDB01; DATABASE: CRTDB -readwrite - Indivudual user setup.   
+Links to all remote PCs
+	- IP addresses
+	- Process to reset password - every 2 months
+							
+
+Optional
+
+FileZilla
+Internal communicator (Sofia projects) STC
+
+Client specific tool accesses:
+- part of working instructions -
+	- client specific tools
+	- BO - access to folders. Sample? Replicate someone elses account.
+	- ICOACH upload - access to specific clients
+	- IEX access
+	- EDW not generic access 
+	- 
+	
+
+
+
+Tips:
+User becomes local admin after mail from G.Tsatsev or N.Lubenov or A.Yankulov
+USB Ports stays closed until request from G.Tsatsev
