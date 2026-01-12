@@ -16,7 +16,6 @@ Cisco/Cisco account - IT to check  - VPN connection
 Powershell/ISE - with windows IT to check
 Excel Power Query
 DAX Studio
-Tabular Editor
 
 Not IT related:
 
